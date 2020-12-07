@@ -2,7 +2,7 @@
 	<div id="app" v-if="loginState">
 		<router-view />
 	</div>
-	<div v-else class="login">
+	<div v-else id="login">
 		<router-view />
 	</div>
 </template>
@@ -23,4 +23,9 @@ export default {
 </script>
 
 <style>
+    body,html,#app,#login{
+        height: 100%;
+        margin: 0;
+        bottom: 0;
+    }
 </style>
