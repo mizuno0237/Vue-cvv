@@ -7,6 +7,7 @@
                     <el-input v-model="username" placeholder="User name"></el-input>
                     <el-input placeholder="Password" v-model="password" show-password></el-input>
                     <el-button type="info" @click="signin()">Login</el-button>
+                    <el-alert title="" type="error"></el-alert>
                 </el-main>
             </el-container>
         </el-container>
