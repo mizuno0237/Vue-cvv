@@ -6,8 +6,8 @@
                 <el-main>
                     <el-input v-model="username" placeholder="User name"></el-input>
                     <el-input placeholder="Password" v-model="password" show-password></el-input>
+                    <el-alert :title="errMsg" type="info" effect="dark" v-show="errMsg === ''"></el-alert>
                     <el-button type="info" @click="signin()">Login</el-button>
-                    <el-alert title="" type="error"></el-alert>
                 </el-main>
             </el-container>
         </el-container>
@@ -21,11 +21,13 @@ export default {
         return {
             username: '',
             password: '',
-            loginData: {}
+            loginData: {},
+            errMsg: 'eeee'
         }
     },
     methods: {
         signin: function(){
+            console.log(this.$store.state.loginStatus)
             API.Login.signIn({'username':this.username,'password':this.password}).then(res => {
                 console.log(res.data);
                 // 如果有toekn
@@ -33,75 +35,52 @@ export default {
                     this.loginData["loginStatus"] = true;
                     this.loginData["userName"] = this.username;
                     this.loginData["token"] = res.data.access_token;
-                    if(undefined != data.reason){
-                        localStorage.setItem('tmpToken', res.data.access_token;);
-                        $localStorage.tmpTokenInUse = true;
-                        var restImmUserGlobal = loginService.restImmUserGlobal();
-                        restImmUserGlobal.get(function(data){
-                            $scope.minPwdLength = data['items'][0].pass_min_length;
-                            if($scope.minPwdLength == 0){
-                                $scope.minPwdLength = 10;
-                            }
-                            $localStorage.tmpTokenInUse = false;
-                        });
-                        if(data.reason == 1){
+                    if(undefined !== res.data.reason){
+                        if(res.data.reason == 1){
                             //password expired
-                            $scope.hideErrMsg();
-                            $scope.loginMode = 2;
-                            $scope.loginSysDetailInfo.loginPwdExpireErr = true;
+                            this.errMsg = 'Password expired';
                         }
-                        else if(data.reason == 2){
+                        else if(res.data.reason == 2){
                             //first time login need change password
-                            $scope.hideErrMsg();
-                            $scope.loginMode = 2;
-                            $scope.loginSysDetailInfo.loginChangePwdErr = true;
+                            this.errMsg = 'First time login need change password';
                         }
-                        else if(data.reason == 3){
+                        else if(res.data.reason == 3){
                             //sha256 type password expired
-                            $scope.hideErrMsg();
-                            $scope.loginSysDetailInfo.sha256PwdChangeErr = true;
-                            return;
+                            this.errMsg = 'sha256 type password expired';
                         }
-                        else if(data.reason == 4){
+                        else if(res.data.reason == 4){
                             //NULL-PASSWORD user need to create the password. 
-                            $scope.hideErrMsg();
-                            $scope.loginSysDetailInfo.nullPwdChangeErr = true;
-                            return;
+                            this.errMsg = 'NULL-PASSWORD user need to create the password.';
                         }
-                        else if(data.reason == 5){
+                        else if(res.data.reason == 5){
                             // user sessions has reached its maximum. 
-                            $scope.hideErrMsg();
-                            $scope.loginSysDetailInfo.loginMaxSessionErr = true;
-                            return;
+                            this.errMsg = 'User sessions has reached its maximum. ';
                         }
-                        $scope.loginTmpInfo = angular.copy(loginData);						
-                        return;
                     }
                     else{
                         //login succeed
-                        $("#loginPage").hide();
-                        $("#homeView").show();
-                        $localStorage.tmpToken = {};
-                        delete $localStorage.tmpToken;
-                        $localStorage.tmpTokenInUse = false;
-                        delete $localStorage.tmpTokenInUse;
-                        tokenCacheService.setTokenCache(loginData);
-                        $localStorage.tier = 1;
-                        //clear cusomize table
-                        delete $localStorage.cusTable;
-                        delete $localStorage.cusTableAd;
-                        restGetTire.get(function(data){
-                            if(data['return'] == 0){
-                                $rootScope.tier = data.tier;
-                                $localStorage.tier = data.tier;
-                                console.log("tier is :"+$rootScope.tier);
-                            }
-                        });
-                        $location.path("/home");
+                        localStorage.setItem('usrInfo', JSON.stringify(this.loginData));
+                        sessionStorage.setItem('usrInfo', JSON.stringify(this.loginData));
+                        sessionStorage.setItem('token', this.loginData['token']);
+                        this.$store.commit('changeLoginStatus', true);
+                        console.log(this.$store.state.loginStatus);
+                        console.log(sessionStorage.getItem('token'))
+                        // $localStorage.tier = 1;
+                        // //clear cusomize table
+                        // delete $localStorage.cusTable;
+                        // delete $localStorage.cusTableAd;
+                        // restGetTire.get(function(data){
+                        //     if(data['return'] == 0){
+                        //         $rootScope.tier = data.tier;
+                        //         $localStorage.tier = data.tier;
+                        //         console.log("tier is :"+$rootScope.tier);
+                        //     }
+                        // });
+                        // $location.path("/home");
                     }
                 }else{
-                    $scope.hideErrMsg();
-                    $scope.loginSysDetailInfo.loginErr = true;
+                    // $scope.hideErrMsg();
+                    // $scope.loginSysDetailInfo.loginErr = true;
                 }
             });
         }

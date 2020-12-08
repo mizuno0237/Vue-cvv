@@ -1,8 +1,5 @@
 <template>
-	<div id="app" v-if="loginState">
-		<router-view />
-	</div>
-	<div v-else id="login">
+	<div id="app">
 		<router-view />
 	</div>
 </template>
@@ -13,11 +10,6 @@ export default {
 	data () {
 		return {
 		};
-	},
-	computed: {
-		loginState: function () {
-			return this.$store.state.loginState;
-		}
 	}
 }
 </script>

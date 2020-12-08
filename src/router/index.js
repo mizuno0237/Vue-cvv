@@ -22,15 +22,16 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
     if(sessionStorage.getItem('token')) {
         console.log('有token');
-        store.commit('setToken', JSON.parse(sessionStorage.getItem('token')));
-        next({
-            path: '/home'
-        });
-        next();
+        store.commit('setToken', sessionStorage.getItem('token'));
+        if (to.path === '/home') {
+            next()
+        } else {
+            next('/home')
+        }
     } else {
         console.log('没有token');
         store.commit('setToken', '');
-        if (to.path === '/login') { //这就是跳出循环的关键
+        if (to.path === '/login') {
            next()
         } else {
             next('/login')
