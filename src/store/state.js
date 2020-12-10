@@ -2,5 +2,6 @@
 
 export default {
     loginStatus: false,
-    token: null
+    token: null,
+    tier: 1
 }

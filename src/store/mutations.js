@@ -5,4 +5,7 @@ export default {
     changeLoginStatus(state, data) {
         state['loginStatus'] = data;
     },
+    changeTier(state, data) {
+        state['tier'] = data;
+    },
 }

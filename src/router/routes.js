@@ -1,12 +1,15 @@
 // 路由配置
 let routes = [{
-    path: '/',
+    path: '/home',
     name: 'home',
-    component: () => import('../components/home')
+    component: resolve => require(['../components/home'], resolve),
+    meta: { title: 'home', noCache: true }
 },
 {
     path: '/login',
-    component: () => import('../components/login')
+    name: 'login',
+    component: resolve => require(['../components/login'], resolve),
+    meta: { title: 'login', noCache: true }
 },
 { 
     path: '*',

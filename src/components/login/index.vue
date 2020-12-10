@@ -4,10 +4,18 @@
             <el-aside width="58.6%">login left</el-aside>
             <el-container width="41.4%;">
                 <el-main>
-                    <el-input v-model="username" placeholder="User name"></el-input>
-                    <el-input placeholder="Password" v-model="password" show-password></el-input>
-                    <el-alert :title="errMsg" type="info" effect="dark" v-show="errMsg === ''"></el-alert>
-                    <el-button type="info" @click="signin()">Login</el-button>
+                    <div>
+                        <el-input v-model="username" placeholder="User name"></el-input>
+                    </div>
+                    <div>
+                        <el-input placeholder="Password" v-model="password" show-password></el-input>
+                    </div>
+                    <div>
+                        <el-alert :title="errMsg" type="info" effect="dark" v-show="errMsg !== ''" :closable="false"></el-alert>
+                    </div>
+                    <div class="signBtn">
+                        <el-button type="info" @click="signin()">Login</el-button>
+                    </div>
                 </el-main>
             </el-container>
         </el-container>
@@ -22,7 +30,7 @@ export default {
             username: '',
             password: '',
             loginData: {},
-            errMsg: 'eeee'
+            errMsg: ''
         }
     },
     methods: {
@@ -63,20 +71,14 @@ export default {
                         sessionStorage.setItem('usrInfo', JSON.stringify(this.loginData));
                         sessionStorage.setItem('token', this.loginData['token']);
                         this.$store.commit('changeLoginStatus', true);
-                        console.log(this.$store.state.loginStatus);
-                        console.log(sessionStorage.getItem('token'))
-                        // $localStorage.tier = 1;
-                        // //clear cusomize table
-                        // delete $localStorage.cusTable;
-                        // delete $localStorage.cusTableAd;
-                        // restGetTire.get(function(data){
-                        //     if(data['return'] == 0){
-                        //         $rootScope.tier = data.tier;
-                        //         $localStorage.tier = data.tier;
-                        //         console.log("tier is :"+$rootScope.tier);
-                        //     }
-                        // });
-                        // $location.path("/home");
+                        localStorage.setItem('tier', 1);
+                        API.Login.restGetTire().then(res => {
+                            console.log(res.data);
+                            this.$store.commit('changeTier', res.data.tier);
+                            localStorage.setItem('tier', res.data.tier);
+                            console.log("tier is :" + this.$store.state.tier);
+                        })
+                        this.$router.push({ path:'/home'})
                     }
                 }else{
                     // $scope.hideErrMsg();
@@ -88,7 +90,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .el-aside {
     background-color: rgba(51, 63, 75, 1);
     color: #fff;
@@ -101,5 +103,12 @@ export default {
     color: #fff;
     text-align: center;
     line-height: 160px;
+}
+
+.signBtn {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    position: relative;
 }
 </style>
