@@ -4,16 +4,16 @@
             <el-aside width="58.6%">login left</el-aside>
             <el-container width="41.4%;">
                 <el-main>
-                    <div>
+                    <div class="loginUsername">
                         <el-input v-model="username" placeholder="User name"></el-input>
                     </div>
-                    <div>
+                    <div class="loginPwd">
                         <el-input placeholder="Password" v-model="password" show-password></el-input>
                     </div>
-                    <div>
+                    <div class="loginErrMsg">
                         <el-alert :title="errMsg" type="info" effect="dark" v-show="errMsg !== ''" :closable="false"></el-alert>
                     </div>
-                    <div class="signBtn">
+                    <div>
                         <el-button type="info" @click="signin()">Login</el-button>
                     </div>
                 </el-main>
@@ -104,11 +104,31 @@ export default {
     text-align: center;
     line-height: 160px;
 }
-
-.signBtn {
+.loginPwd, .loginUsername {
+    height: 40px;
+    margin-bottom: 20px;
+    .el-input {
+        height: 40px;
+        position: relative;
+        .el-input__inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+}
+.loginErrMsg {
     width: 100%;
     height: 40px;
-    text-align: center;
     position: relative;
+    .el-alert {
+        width: 300px;
+        height: 40px;
+        position: absolute;
+        height: 40px;
+        left: 50%;
+        margin-left: -150px;
+        text-align: center;
+    }
 }
 </style>
