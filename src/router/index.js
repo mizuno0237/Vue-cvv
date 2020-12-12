@@ -23,6 +23,7 @@ router.beforeEach((to, from, next) => {
     if(sessionStorage.getItem('token')) {
         console.log('有token');
         store.commit('setToken', sessionStorage.getItem('token'));
+        store.commit('changeLoginStatus', true);
         if (to.path === '/home') {
             next()
         } else {

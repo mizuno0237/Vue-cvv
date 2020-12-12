@@ -2,13 +2,13 @@
 let routes = [{
     path: '/home',
     name: 'home',
-    component: resolve => require(['../components/home'], resolve),
+    component: resolve => require(['../views/home'], resolve),
     meta: { title: 'home', noCache: true }
 },
 {
     path: '/login',
     name: 'login',
-    component: resolve => require(['../components/login'], resolve),
+    component: resolve => require(['../views/login'], resolve),
     meta: { title: 'login', noCache: true }
 },
 { 
