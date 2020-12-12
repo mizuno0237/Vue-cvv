@@ -1,12 +1,12 @@
 <template>
 	<div id="app">
-        <el-container id="appContainer">
-            <el-aside width="210px" v-if="loginStatus">
+        <el-container id="appContainer" v-if="loginStatus">
+            <el-aside width="210px">
                 <img src="./assets/XCC-logo.png" alt="">
                 <leftMenu></leftMenu>
             </el-aside>
             <el-container id="imm3Content">
-                <el-header v-if="loginStatus">
+                <el-header>
                     header
                 </el-header>
                 <el-main id="appMain">
@@ -14,6 +14,7 @@
                 </el-main>
             </el-container>
         </el-container>
+        <router-view v-else/>
 	</div>
 </template>
 

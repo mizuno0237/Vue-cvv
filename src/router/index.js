@@ -19,6 +19,8 @@ let router = new Router({
   routes
 });
 
+Router.prototype.push = location => Router.prototype.push.call(this, location).catch(err => err);
+
 router.beforeEach((to, from, next) => {
     if(sessionStorage.getItem('token')) {
         console.log('有token');
@@ -38,6 +40,6 @@ router.beforeEach((to, from, next) => {
             next('/login')
         }
     }
-})
+});
 
 export default router;
