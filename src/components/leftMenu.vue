@@ -11,7 +11,7 @@
                 text-color="#fff"
                 active-text-color="#ffd04b">
                     <el-menu-item index="1">
-                        <i class="el-icon-menu"></i>
+                        <i><img src="../assets/icons/home-white.png" alt="" style="width: 16px;height: 16px;"/></i>
                         <span slot="title">Home</span>
                     </el-menu-item>
                     <el-menu-item index="2">
@@ -61,5 +61,8 @@ export default {
 <style scoped lang='scss'>
 .el-col.el-col-12{
     width: 100%;
+}
+/deep/.el-menu-item,.el-submenu__title{
+    padding: 0!important;
 }
 </style>
