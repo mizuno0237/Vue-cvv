@@ -16,20 +16,25 @@ Vue.use(Router)
 // }
 
 let router = new Router({
-  routes
+    routes: routes
 });
 
-Router.prototype.push = location => Router.prototype.push.call(this, location).catch(err => err);
+
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 
 router.beforeEach((to, from, next) => {
     if(sessionStorage.getItem('token')) {
         console.log('有token');
         store.commit('setToken', sessionStorage.getItem('token'));
         store.commit('changeLoginStatus', true);
-        if (to.path === '/home') {
-            next()
-        } else {
+        if (next.path === '/login') {
             next('/home')
+        } else {
+            next()
         }
     } else {
         console.log('没有token');

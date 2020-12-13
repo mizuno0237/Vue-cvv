@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
-    <h1>Home页面</h1>
+    <h1>Security页面</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'security',
   data () {
     return {
         msg: String

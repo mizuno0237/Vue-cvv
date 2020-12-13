@@ -24,6 +24,18 @@ let routes = [{
     meta: { title: 'inventory', noCache: true }
 },
 {
+    path: '/security',
+    name: 'security',
+    component: resolve => require(['../views/security'], resolve),
+    meta: { title: 'security', noCache: true }
+},
+{
+    path: '/network',
+    name: 'network',
+    component: resolve => require(['../views/network'], resolve),
+    meta: { title: 'network', noCache: true }
+},
+{
     path: '/license',
     name: 'license',
     component: resolve => require(['../views/license'], resolve),

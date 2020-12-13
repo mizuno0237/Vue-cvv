@@ -84,8 +84,7 @@ export default {
                         this.$router.push({ path:'/home'})
                     }
                 }else{
-                    // $scope.hideErrMsg();
-                    // $scope.loginSysDetailInfo.loginErr = true;
+                    console.log('wrong username or password')
                 }
             });
         }
