@@ -1,0 +1,83 @@
+{
+    "items": [{
+        "components": [{
+            "components.fru_number": "",
+            "components.fruid": 2,
+            "components.index": 1,
+            "components.manuf_date": "2019-08-02",
+            "components.manuf_id": "LNVO",
+            "components.name": "SAS Backplane1",
+            "components.part_number": "STA7A39135",
+            "components.serial_number": "XXXX98200C6"
+        },
+        {
+            "components.fru_number": "",
+            "components.fruid": 12,
+            "components.index": 7,
+            "components.manuf_date": "",
+            "components.manuf_id": "Intel(R) Corporation",
+            "components.name": "CPU 1",
+            "components.part_number": "Genuine Intel(R) CPU 0000%@",
+            "components.serial_number": ""
+        },
+        {
+            "components.fru_number": "",
+            "components.fruid": 13,
+            "components.index": 8,
+            "components.manuf_date": "",
+            "components.manuf_id": "Intel(R) Corporation",
+            "components.name": "CPU 2",
+            "components.part_number": "Genuine Intel(R) CPU 0000%@",
+            "components.serial_number": ""
+        },
+        {
+            "components.name": "PSU1",
+            "components.index": 9,
+            "components.serial_number": "P1ZS68X0117",
+            "components.fruid": 7,
+            "components.manuf_id": "ARTE",
+            "components.manuf_date": "2016-08-29"
+        },
+        {
+            "components.name": "PSU2",
+            "components.index": 10,
+            "components.serial_number": "P1LD71L000F",
+            "components.fruid": 8,
+            "components.manuf_id": "ARTE",
+            "components.manuf_date": "2017-01-16"
+        },
+        {
+            "components.name": "DIMM_1",
+            "components.index": 12,
+            "components.serial_number": "1388ED35",
+            "components.fruid": 17,
+            "components.manuf_id": "Micron Technology",
+            "components.manuf_date": "2016-08-08"
+        },
+        {
+            "components.name": "DIMM_3",
+            "components.index": 14,
+            "components.serial_number": "81310ACC",
+            "components.fruid": 19,
+            "components.manuf_id": "Hynix Semiconductor",
+            "components.manuf_date": "2016-06-27"
+        },
+        {
+            "components.name": "DIMM_5",
+            "components.index": 16,
+            "components.serial_number": "1270B5C0",
+            "components.fruid": 21,
+            "components.manuf_id": "Micron Technology",
+            "components.manuf_date": "2016-04-25"
+        },
+        {
+            "components.name": "DIMM_8",
+            "components.index": 19,
+            "components.serial_number": "12E774B1",
+            "components.fruid": 24,
+            "components.manuf_id": "Micron Technology",
+            "components.manuf_date": "2016-06-06"
+        }],
+        "ml2OtherInfo": []
+    }]
+}

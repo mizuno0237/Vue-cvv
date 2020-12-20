@@ -1,0 +1,15 @@
+{
+    "items": [
+        {
+            "dns_ipv4_primary": "0.0.0.0",
+            "dns_ipv4_secondary": "0.0.0.0",
+            "dns_ipv4_tertiary": "0.0.0.0",
+            "dns_ipv6_primary": "::",
+            "dns_ipv6_secondary": "::",
+            "dns_ipv6_tertiary": "::",
+            "dns_lxca": 1,
+            "dns_preferred_type": 2,
+            "dns_use_additional": 0
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "firmware": [{
+        "build": "DVI399T",
+        "index": 1,
+        "release_date": "2020-09-02",
+        "type": 4,
+        "version": "4.26"
+    },{
+        "build": "DVI399T",
+        "index": 2,
+        "release_date": "2020-09-02",
+        "type": 5,
+        "version": "4.26"
+    }],
+    "hostname": "XCC-7X07-SN",
+    "ipv4_address": "10.106.236.87",
+    "location": "",
+    "lowest_u": 0,
+    "machine_name": "ThinkSystem SR530",
+    "machine_typemodel": "7X07RCZ000",
+    "power_state": 0,
+    "rack_id": "",
+    "room_id": "",
+    "serial_number": "          ",
+    "server_state": 0,
+    "system_name": ""
+}

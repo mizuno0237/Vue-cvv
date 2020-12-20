@@ -1,0 +1,8 @@
+{
+  "config_disabled": 0,
+  "enableIDButton": 1,
+  "hysteresis": 10,
+  "owner": 3,
+  "return": 0,
+  "timeout": 5
+}

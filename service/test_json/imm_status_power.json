@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+            "LEDs": [
+                {
+                    "color": "Yellow",
+                    "id": 0,
+                    "index": 1,
+                    "name": "Fault",
+                    "status": 1
+                },
+                {
+                    "color": "Blue",
+                    "id": 1,
+                    "index": 2,
+                    "name": "Identify",
+                    "status": 0
+                },
+                {
+                    "color": "Green",
+                    "id": 783,
+                    "index": 3,
+                    "name": "BMC Heartbeat",
+                    "status": 2
+                },
+                {
+                    "color": "Green",
+                    "id": 782,
+                    "index": 4,
+                    "name": "Power",
+                    "status": 2
+                }
+            ],
+            "S3Enable_state": 0,
+            "power_state": 0,
+            "server_state": 1,
+			"smm_mode_flag": 0
+        }
+    ]
+}

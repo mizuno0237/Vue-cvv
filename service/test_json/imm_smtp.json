@@ -1,0 +1,11 @@
+{
+	"items": [{
+		"smtp_port": 25,
+		"smtp_email": "",
+		"smtp_password": "",
+		"smtp_auth": 0,
+		"smtp_host": "0.0.0.0",
+		"smtp_username": "",
+		"smtp_authmethod": 1
+	}]
+}

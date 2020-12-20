@@ -1,0 +1,23 @@
+{
+    "items": [
+        {
+            "S3Enable_state": 0, 
+            "datetime_current": "2016-10-11T05:44:27.049", 
+            "power_off_dow": 1, 
+            "power_off_enabled": 1, 
+            "power_off_interval": 1, 
+            "power_off_time": "01:15", 
+            "power_on_datetime": "2016-10-26T10:18", 
+            "power_on_datetime_enabled": 1, 
+            "power_on_dow": 2, 
+            "power_on_enabled": 0, 
+            "power_on_interval": 0, 
+            "power_on_time": "02:20", 
+            "power_state": 1, 
+            "restart_dow": 3, 
+            "restart_enabled": 0, 
+            "restart_interval": 0, 
+            "restart_time": "03:30"
+        }
+    ]
+}

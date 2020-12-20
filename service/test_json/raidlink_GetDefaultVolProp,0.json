@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "ap": 0,
+            "blksz": 512,
+            "capacity": 0,
+            "cpio": 0,
+            "cpra": 0,
+            "cpwb": 0,
+            "dcp": 0,
+            "dftpp": 0,
+            "initstate": 0,
+            "maxstrip": 7,
+            "minstrip": 6,
+            "name": "VD_M2",
+            "stripsize": 6
+        }
+    ]
+}

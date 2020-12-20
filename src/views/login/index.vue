@@ -75,7 +75,7 @@ export default {
                         sessionStorage.setItem('token', this.loginData['token']);
                         this.$store.commit('changeLoginStatus', true);
                         localStorage.setItem('tier', 1);
-                        API.Login.restGetTire().then(res => {
+                        API.Providers.restGetTire().then(res => {
                             console.log(res.data);
                             this.$store.commit('changeTier', res.data.tier);
                             localStorage.setItem('tier', res.data.tier);

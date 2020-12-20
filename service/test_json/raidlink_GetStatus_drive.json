@@ -1,0 +1,18 @@
+{
+    "items":[{
+        "bDedicatedHS": 1,
+        "bGlobalHS": 1,
+        "bGoodTojbod": 1,
+        "bJbodTogood": 1,
+        "bMissing": 1,
+        "bOffline": 128,
+        "bOnline": 1,
+        "bPFRemoval": 1,
+        "bRemoveHS": 1,
+        "bReusable": 1,
+        "bStartRebuild": 1,
+        "bUnconfbad": 1,
+        "bUnconfgood": 1
+
+    }]   
+}

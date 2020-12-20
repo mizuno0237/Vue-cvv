@@ -1,0 +1,95 @@
+{
+	"items": [
+	{
+		"kvm_session_id": 1, 
+		"username":"USERID1", 
+		"ipaddr": "10.240.21.101", 
+		"single_user": 0, 
+		"is_reserved": 0, 
+		"reserve_timeout": 180, 
+		"reserve_expire": 60, 
+		"en_preempt": 1, 
+		"preempt_timeout": 300, 
+		"is_preempt_pending": 0,
+		"preempt_id": 0, 
+		"preempt_expire": 0, 
+		"preempt_status": 0
+	},
+	{
+		"kvm_session_id": 2, 
+		"username":"USERID2", 
+		"ipaddr": "10.240.21.102", 
+		"single_user": 0, 
+		"is_reserved": 0, 
+		"reserve_timeout": 180, 
+		"reserve_expire": 60, 
+		"en_preempt": 0, 
+		"preempt_timeout": 300, 
+		"is_preempt_pending": 0,
+		"preempt_id": 0, 
+		"preempt_expire": 0, 
+		"preempt_status": 0
+	},
+	{
+		"kvm_session_id": 3, 
+		"username":"USERID3", 
+		"ipaddr": "10.240.21.103", 
+		"single_user": 0, 
+		"is_reserved": 0, 
+		"reserve_timeout": 180, 
+		"reserve_expire": 60, 
+		"en_preempt": 1, 
+		"preempt_timeout": 360, 
+		"is_preempt_pending": 1,
+		"preempt_id": 0, 
+		"preempt_expire": 0, 
+		"preempt_status": 0
+	},
+	{
+		"kvm_session_id": 4, 
+		"username":"USERID4", 
+		"ipaddr": "10.240.21.104", 
+		"single_user": 0, 
+		"is_reserved": 0, 
+		"reserve_timeout": 180, 
+		"reserve_expire": 60, 
+		"en_preempt": 1, 
+		"preempt_timeout": 1200, 
+		"is_preempt_pending": 1,
+		"preempt_id": 0, 
+		"preempt_expire": 0, 
+		"preempt_status": 0
+	},
+	{
+		"kvm_session_id": 5, 
+		"username":"USERID5", 
+		"ipaddr": "10.240.21.105", 
+		"single_user": 0, 
+		"is_reserved": 0, 
+		"reserve_timeout": 180, 
+		"reserve_expire": 60, 
+		"en_preempt": 1, 
+		"preempt_timeout": 1200, 
+		"is_preempt_pending": 0,
+		"preempt_id": 0, 
+		"preempt_expire": 0, 
+		"preempt_status": 0
+	},
+	{
+		"kvm_session_id": 6, 
+		"username":"USERID6", 
+		"ipaddr": "10.240.21.106", 
+		"single_user": 0, 
+		"is_reserved": 0, 
+		"reserve_timeout": 180, 
+		"reserve_expire": 60, 
+		"en_preempt": 1, 
+		"preempt_timeout": 1200, 
+		"is_preempt_pending": 0,
+		"preempt_id": 0, 
+		"preempt_expire": 0, 
+		"preempt_status": 0
+	}
+	]
+}
+

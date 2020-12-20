@@ -1,0 +1,72 @@
+{
+    "items": [
+        {
+            "imm_services_disabled": "0",
+            "lan_over_usb_addr_mode": 0,
+            "lan_over_usb_enabled": 0,
+            "lan_over_usb_ipv4_address": "169.254.95.118",
+            "lan_over_usb_ipv4_subnet_marks": "255.255.0.0",
+            "lan_over_usb_ipv6_address": "fe80::fe45:96ff:fefc:cb16",
+            "os_lan_over_usb_ipv4_address": "169.254.95.120",
+            "usb_eth_over_usb_enabled": 1,
+            "usb_eth_to_eth_enabled": 1,
+            "usb_mapped_ports": [
+                {
+                    "eth_port": 3389,
+                    "ext_port": 3389,
+                    "id": 1
+                },
+                {
+                    "eth_port": 5900,
+                    "ext_port": 5900,
+                    "id": 2
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 3
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 4
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 5
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 6
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 7
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 8
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 9
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 10
+                },
+                {
+                    "eth_port": 0,
+                    "ext_port": 0,
+                    "id": 11
+                }
+            ]
+        }
+    ]
+}

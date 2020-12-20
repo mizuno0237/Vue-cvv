@@ -1,0 +1,18 @@
+{
+    "items": [
+        {
+            "begin_time": "",
+            "datetime_current": "2018-08-02 10:23:32+00:00",
+            "end_time": "",
+            "interval_enabled": 0,
+            "interval_time": "",
+            "ip_address": "",
+            "ip_enabled": 0,
+            "ipv6_address": "",
+            "ipv6_enabled": 0,
+            "mac_address": "",
+            "mac_enabled": 0,
+            "time_enabled": 0
+        }
+    ]
+}

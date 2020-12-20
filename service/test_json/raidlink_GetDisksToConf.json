@@ -1,0 +1,111 @@
+{
+    "items": [{
+        "supported_raidlvl": [{
+            "rdlvlstr": "RAID 0",
+            "maxSpan": 1,
+            "rdlvl": 1,
+            "minPd": 1
+        }, {
+            "rdlvlstr": "RAID 1",
+            "maxSpan": 1,
+            "rdlvl": 2,
+            "minPd": 2
+        }, {
+            "rdlvlstr": "RAID 5",
+            "maxSpan": 1,
+            "rdlvl": 4,
+            "minPd": 3
+        }, {
+            "rdlvlstr": "RAID 6",
+            "maxSpan": 1,
+            "rdlvl": 16,
+            "minPd": 4
+        }, {
+            "rdlvlstr": "RAID 10",
+            "maxSpan": 3,
+            "rdlvl": 32,
+            "minPd": 2
+        }, {
+            "rdlvlstr": "RAID 50",
+            "maxSpan": 2,
+            "rdlvl": 64,
+            "minPd": 3
+        }, {
+            "rdlvlstr": "RAID 00",
+            "maxSpan": 7,
+            "rdlvl": 512,
+            "minPd": 1
+        }],
+        "supported_disklist": [{
+            "sen": 0,
+            "capacityStr": "300GB",
+            "slotNo": 0,
+            "mType": "HDD",
+            "name": "Drive 0",
+            "id": 8,
+            "iType": "SAS",
+            "enclosureId": 251,
+            "blockSize": 512
+        }, {
+            "sen": 0,
+            "capacityStr": "300GB",
+            "slotNo": 1,
+            "mType": "HDD",
+            "name": "Drive 1",
+            "id": 4,
+            "iType": "SAS",
+            "enclosureId": 251,
+            "blockSize": 512
+        }, {
+            "sen": 0,
+            "capacityStr": "600GB",
+            "slotNo": 2,
+            "mType": "HDD",
+            "name": "Drive 2",
+            "id": 6,
+            "iType": "SAS",
+            "enclosureId": 251,
+            "blockSize": 512
+        }, {
+            "sen": 0,
+            "capacityStr": "600GB",
+            "slotNo": 3,
+            "mType": "HDD",
+            "name": "Drive 3",
+            "id": 5,
+            "iType": "SAS",
+            "enclosureId": 251,
+            "blockSize": 512
+        }, {
+            "sen": 0,
+            "capacityStr": "600GB",
+            "slotNo": 5,
+            "mType": "HDD",
+            "name": "Drive 5",
+            "id": 2,
+            "iType": "SAS",
+            "enclosureId": 251,
+            "blockSize": 512
+        }, {
+            "sen": 0,
+            "capacityStr": "600GB",
+            "slotNo": 6,
+            "mType": "HDD",
+            "name": "Drive 6",
+            "id": 3,
+            "iType": "SAS",
+            "enclosureId": 251,
+            "blockSize": 512
+        }, {
+            "sen": 0,
+            "capacityStr": "600GB",
+            "slotNo": 7,
+            "mType": "HDD",
+            "name": "Drive 7",
+            "id": 1,
+            "iType": "SAS",
+            "enclosureId": 251,
+            "blockSize": 512
+        }]
+    }]
+}

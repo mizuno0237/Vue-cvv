@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "install": 1,
+            "max": 2,
+            "type": "CPU"
+        },
+        {
+            "install": 0,
+            "max": 24,
+            "type": "memory"
+        },
+        {
+            "install": "N/A",
+            "max": 8,
+            "type": "storage"
+        },
+        {
+            "install": 2,
+            "max": 2,
+            "type": "ps"
+        },
+        {
+            "install": "N/A",
+            "max": 6,
+            "type": "fan"
+        },
+        {
+            "install": 0,
+            "max": "N/A",
+            "type": "pci"
+        }
+    ]
+}

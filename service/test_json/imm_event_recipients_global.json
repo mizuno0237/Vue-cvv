@@ -1,0 +1,7 @@
+{
+	"items": [{
+		"delay_between_attempts": 30,
+		"delay_between_entries": 30,
+		"retry_limit": 5
+	}]
+}

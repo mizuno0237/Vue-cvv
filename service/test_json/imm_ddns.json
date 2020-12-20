@@ -1,0 +1,11 @@
+{
+    "items": [
+        {
+            "ddns_custom_name": "lenovo.com",
+            "ddns_enabled": 0,
+            "ddns_mode": 1,
+            "ipv4_domain_name": "lenovo.com",
+            "ipv6_domain_name": ""
+        }
+    ]
+}

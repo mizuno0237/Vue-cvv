@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "auto_dst_update": 0,
+            "baud_rate": 115200,
+            "cli_key_sequence": "^[(",
+            "cli_mode": 2,
+            "date_dst_special": "",
+            "date_gmt": "+00:00",
+            "datetime_current": "2020-07-27 04:49:35+00:00",
+            "datetime_method": 0,
+            "host_clock_format": 1,
+            "is_ite": 0,
+            "ntp_frequency": 600,
+            "ntp_host_1": "",
+            "ntp_host_2": "",
+            "ntp_host_3": "",
+            "ntp_host_4": "",
+            "ntp_syncnow": 1,
+            "parity": "none",
+            "stopbits": 1
+        }
+    ]
+}

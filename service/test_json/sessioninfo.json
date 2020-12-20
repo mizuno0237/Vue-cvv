@@ -1,0 +1,10 @@
+{
+	"access": "Supervisor",
+	"privilege" : 2,
+	"remoteip": "127.0.0.1", 
+	"return": 0, 
+	"schema": "http", 
+	"timeout": 5, 
+	"userid": 2,
+	"username": "USERID"
+}

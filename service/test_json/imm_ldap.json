@@ -1,0 +1,32 @@
+{
+	"items": [
+		{
+			"dummy_ldap_perm_attr": "",
+			"ldap_bind_method": 0,
+			"ldap_client_dn": "",
+			"ldap_domain_name": "",
+			"ldap_domain_source": 2,
+			"ldap_enable_roles": 0,
+			"ldap_forest_name": "",
+			"ldap_group_filter": "",
+			"ldap_group_search_attr": "memberOf",
+			"ldap_password": "",
+			"ldap_perm_attr": "",
+			"ldap_root_dn": "",
+			"ldap_search_domain": "",
+			"ldap_server_address_1": "0.0.0.0",
+			"ldap_server_address_2": "",
+			"ldap_server_address_3": "",
+			"ldap_server_address_4": "",
+			"ldap_server_port_1": "389",
+			"ldap_server_port_2": "389",
+			"ldap_server_port_3": "389",
+			"ldap_server_port_4": "389",
+			"ldap_server_target": "",
+			"ldap_service_name": "ldap",
+			"ldap_source_select": 0,
+			"ldap_uid_search_attr": "sAMAccountName",
+			"ldap_use_server_method": 0
+		}
+	]
+}

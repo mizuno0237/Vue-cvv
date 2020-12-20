@@ -1,0 +1,59 @@
+{
+    "items": [
+        {
+            "domain": "//10.240.218.251/nfsroot/cyw",
+            "filename": "vmtest.iso",
+            "filetype": 1,
+            "is_mount": 1,
+            "islocal": 0,
+            "mountformat": 3,
+            "mountoption": "",
+            "mountpath": "/mnt/VM0",
+            "ownerName": "USERID",
+            "readOnly": 1,
+            "remotepath": "//10.240.218.251/nfsroot/cyw",
+            "session": "127.0.0.1",
+            "size": 0,
+            "slotId": 0,
+            "status": 6,
+            "username": "smbuser"
+        },
+        {
+            "domain": "",
+            "filename": "vmtest.iso",
+            "filetype": 2,
+            "is_mount": 1,
+            "islocal": 0,
+            "mountformat": 1,
+            "mountoption": "",
+            "mountpath": "/mnt/VM0",
+            "ownerName": "USERID",
+            "readOnly": 0,
+            "remotepath": "//10.240.218.251/nfsroot/cyw",
+            "session": "127.0.0.1",
+            "size": 0,
+            "slotId": 0,
+            "status": 6,
+            "username": "smbuser"
+        },
+        {
+            "domain": "",
+            "filename": "vmtest.iso",
+            "filetype": 2,
+            "is_mount": 1,
+            "islocal": 0,
+            "mountformat": 0,
+            "mountoption": "",
+            "mountpath": "/mnt/VM0",
+            "ownerName": "USERID",
+            "readOnly": 0,
+            "remotepath": "//10.240.218.251/nfsroot/cyw",
+            "session": "127.0.0.1",
+            "size": 0,
+            "slotId": 0,
+            "status": 6,
+            "username": "smbuser"
+        }
+
+    ]
+}

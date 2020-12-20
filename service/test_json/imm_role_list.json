@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "role_name": "Administrator", 
+            "role_privilege": 2
+        }, 
+        {
+            "role_name": "ReadOnly", 
+            "role_privilege": 4
+        }, 
+        { 
+            "role_name": "Operator", 
+            "role_privilege": 904
+        }, 
+        {
+            "role_name": "role1", 
+            "role_privilege": 24
+        }, 
+        {
+            "role_name": "role2", 
+            "role_privilege": 896
+        }
+    ]
+}

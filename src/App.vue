@@ -7,7 +7,7 @@
             </el-aside>
             <el-container id="imm3Content">
                 <el-header>
-                    header
+                    <topMenu></topMenu>
                 </el-header>
                 <el-main id="appMain">
                     <router-view />
@@ -20,6 +20,7 @@
 
 <script>
 import leftMenu from './components/leftMenu.vue';
+import topMenu from './components/topMenu.vue';
 export default {
 	name: 'App',
 	data () {
@@ -32,7 +33,8 @@ export default {
         }
     },
     components:{
-        leftMenu
+        leftMenu,
+        topMenu
     }
 }
 </script>
@@ -44,7 +46,7 @@ body,html,#app,#appContainer,#appMain{
     padding: 0;
     #imm3Content{
         background-color: #F3F3F6;
-        padding-left: 40px;
+        padding: 0 30px 0 40px;
     }
 }
 .el-aside{

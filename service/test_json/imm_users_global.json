@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "UserAuthMethod": 0, 
+            "factory_force_change": 0, 
+            "force_change": 1, 
+            "lockout_period": 60, 
+            "max_login_failures": 5, 
+            "pass_change_interval": 24, 
+            "pass_expire_days": 90, 
+            "pass_expire_warning_Period": 7, 
+            "pass_min_length": 8, 
+            "pass_min_resuse": 5, 
+            "security_level": 1, 
+            "session_timeout": 20,
+            "pass_complex_required":1
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "items": [
+        {
+            "capping_mode": 0,
+            "capping_soft": 600,
+            "capping_min": 860,
+            "capping_max": 1300
+        }
+    ]
+}

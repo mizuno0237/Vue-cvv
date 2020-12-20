@@ -1,0 +1,41 @@
+{"items":
+    [{
+        "totalCapacityStr": "2239.246GB",
+        "volumes":
+        [{
+            "status": 3,
+            "rdlvlstr": "RAID 0",
+            "name": "VD123DONOTREMOV",
+            "capacityStr": "150GB",
+            "drives": "Drive0",
+            "id": 5, "statusStr": "Optimal"
+        },
+        {
+            "status": 3,
+            "rdlvlstr": "RAID 0",
+            "name": "VD23DONOTREMOVE",
+            "capacityStr": "128.465GB",
+            "drives": "Drive0",
+            "id": 6,
+            "statusStr": "Optimal"
+        },
+        {
+            "status": 3,
+            "rdlvlstr": "RAID 5",
+            "name": "VD_3",
+            "capacityStr": "100GB",
+            "drives": "Drive4, Drive5, Drive6",
+            "id": 15, "statusStr": "Optimal"
+        },
+        {
+            "status": 3,
+            "rdlvlstr": "RAID 0",
+            "name": "VD_3",
+            "capacityStr": "1860.781GB",
+            "drives": "Drive1, Drive2",
+            "id": 16,
+            "statusStr": "Optimal"
+        }]
+    }],
+    "identifier": "storage.id"
+}

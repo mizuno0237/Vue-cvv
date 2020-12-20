@@ -1,0 +1,330 @@
+{
+    "identifier": "storage.id",
+    "items": [
+        {
+            "controllerCount": 3,
+            "controllerInfo": [
+                {
+                    "cacheSize": 2048,
+                    "createModeFlag": 3,
+                    "id": 2,
+                    "name": "ThinkSystem RAID 930-8i 2GB Flash",
+                    "pools": [
+                        {
+                            "disks": [
+                                {
+                                    "RAIDState": "JBOD",
+                                    "enclosureId": 134,
+                                    "fruPartNo": "49Y2023",
+                                    "id": 8,
+                                    "name": "Drive 0",
+                                    "partNo": "49Y2026",
+                                    "serialNo": "PZJ8VDAD",
+                                    "slotNo": 0,
+                                    "type": "600GB 10K 6Gbps SAS 2.5\" HDD"
+                                },
+                                {
+                                    "RAIDState": "Offline",
+                                    "enclosureId": 134,
+                                    "fruPartNo": "49Y2023",
+                                    "id": 6,
+                                    "name": "Drive 1",
+                                    "partNo": "49Y2026",
+                                    "serialNo": "PZJ1K6DD",
+                                    "slotNo": 1,
+                                    "type": "600GB 10K 6Gbps SAS 2.5\" HDD"
+                                }
+                            ],
+                            "freeCapacityStr": "0.000GB",
+                            "id": 2,
+                            "rdlvl": 2,
+                            "rdlvlstr": "RAID 1",
+                            "totalCapacityStr": "557.861GB",
+                            "uid": 0,
+                            "volumes": [
+                                {
+                                    "bootable": 1,
+                                    "capacity": 571250,
+                                    "capacityStr": "557.861GB",
+                                    "id": 2,
+                                    "name": "VD_1",
+                                    "status": 2,
+                                    "statusStr": "Degraded",
+                                    "uid": 0
+                                }
+                            ]
+                        },
+                        {
+                            "disks": [
+                                {
+                                    "RAIDState": "Online",
+                                    "enclosureId": 134,
+                                    "fruPartNo": "42D0628",
+                                    "id": 7,
+                                    "name": "Drive 2",
+                                    "partNo": "42D0631",
+                                    "serialNo": "PWJEGR6D",
+                                    "slotNo": 2,
+                                    "type": "300GB 10K 6Gbps SAS 2.5\" HDD"
+                                },
+                                {
+                                    "RAIDState": "Online",
+                                    "enclosureId": 134,
+                                    "fruPartNo": "81Y9647",
+                                    "id": 5,
+                                    "name": "Drive 3",
+                                    "partNo": "81Y3804",
+                                    "serialNo": "KPH01VJF",
+                                    "slotNo": 3,
+                                    "type": "900GB 10K 6Gbps SAS 2.5\" HDD"
+                                }
+                            ],
+                            "freeCapacityStr": "292.969GB",
+                            "id": 5,
+                            "rdlvl": 1,
+                            "rdlvlstr": "RAID 0",
+                            "totalCapacityStr": "556.930GB",
+                            "uid": 1,
+                            "volumes": [
+                                {
+                                    "bootable": 0,
+                                    "capacity": 170296,
+                                    "capacityStr": "166.305GB",
+                                    "id": 5,
+                                    "name": "VD_2",
+                                    "status": 3,
+                                    "statusStr": "Optimal",
+                                    "uid": 1
+                                },
+                                {
+                                    "bootable": 0,
+                                    "capacity": 100000,
+                                    "capacityStr": "97.656GB",
+                                    "id": 6,
+                                    "name": "VD_3",
+                                    "status": 3,
+                                    "statusStr": "Optimal",
+                                    "uid": 2
+                                }
+                            ]
+                        }
+                    ],
+                    "serialNo": "SP637P0568",
+                    "slotNo": 1,
+                    "type": 0,
+                    "unconfiguredDisks": [
+                        {
+                            "RAIDState": "Unconfigured Good",
+                            "blockSize": 512,
+                            "enclosureId": 134,
+                            "fruPartNo": "00LF039",
+                            "iType": "SATA",
+                            "id": 10,
+                            "name": "Drive 4",
+                            "partNo": "LE",
+                            "serialNo": "S4702NYP",
+                            "slotNo": 4,
+                            "type": "1.00TB 7.2K 6Gbps SATA 2.5\" HDD"
+                        },
+                        {
+                            "RAIDState": "Unconfigured Good",
+                            "blockSize": 512,
+                            "enclosureId": 134,
+                            "fruPartNo": "00LF039",
+                            "iType": "SATA",
+                            "id": 11,
+                            "name": "Drive 5",
+                            "partNo": "LE",
+                            "serialNo": "S4703D4K",
+                            "slotNo": 5,
+                            "type": "1.00TB 7.2K 6Gbps SATA 2.5\" HDD"
+                        },
+                        {
+                            "RAIDState": "Unconfigured Good",
+                            "blockSize": 512,
+                            "enclosureId": 134,
+                            "fruPartNo": "00LF039",
+                            "iType": "SATA",
+                            "id": 9,
+                            "name": "Drive 6",
+                            "partNo": "LE",
+                            "serialNo": "S4703D1N",
+                            "slotNo": 6,
+                            "type": "1.00TB 7.2K 6Gbps SATA 2.5\" HDD"
+                        },
+                        {
+                            "RAIDState": "Unconfigured Bad",
+                            "blockSize": 0,
+                            "enclosureId": 134,
+                            "fruPartNo": "00LF039",
+                            "iType": "SATA",
+                            "id": 12,
+                            "name": "Drive 7",
+                            "partNo": "LE",
+                            "serialNo": "S4703D4N",
+                            "slotNo": 7,
+                            "type": "0GB 7.2K 6Gbps SATA 2.5\" HDD"
+                        }
+                    ],
+                    "volumeCount": 3,
+                    "volumeCountStr": "3 virtual disks"
+                },
+                {
+                    "cacheSize": 1024,
+                    "createModeFlag": 3,
+                    "id": 1,
+                    "name": "ThinkSystem RAID 730-8i 1GB Cache",
+                    "pools": [
+                        {
+                            "disks": [
+                                {
+                                    "RAIDState": "Online",
+                                    "enclosureId": 252,
+                                    "fruPartNo": "42D0633",
+                                    "id": 3,
+                                    "name": "Drive 0",
+                                    "partNo": "42D0636",
+                                    "serialNo": "6SD3PBKS",
+                                    "slotNo": 0,
+                                    "type": "147GB 10K 6Gbps SAS HDD"
+                                },
+                                {
+                                    "RAIDState": "Online",
+                                    "enclosureId": 252,
+                                    "fruPartNo": "42D0422",
+                                    "id": 4,
+                                    "name": "Drive 2",
+                                    "partNo": "42C0251",
+                                    "serialNo": "6SD3RRBT",
+                                    "slotNo": 2,
+                                    "type": "147GB 10K 6Gbps SAS HDD"
+                                }
+                            ],
+                            "freeCapacityStr": "195.312GB",
+                            "id": 1,
+                            "rdlvl": 1,
+                            "rdlvlstr": "RAID 0",
+                            "totalCapacityStr": "271.945GB",
+                            "uid": 0,
+                            "volumes": [
+                                {
+                                    "bootable": 1,
+                                    "capacity": 78472,
+                                    "capacityStr": "76.633GB",
+                                    "id": 1,
+                                    "name": "VD_1",
+                                    "status": 3,
+                                    "statusStr": "Optimal",
+                                    "uid": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "serialNo": "SK63532173",
+                    "slotNo": 3,
+                    "type": 0,
+                    "unconfiguredDisks": [
+                        {
+                            "RAIDState": "Unconfigured Good",
+                            "blockSize": 512,
+                            "enclosureId": 252,
+                            "fruPartNo": "42D0422",
+                            "iType": "SAS",
+                            "id": 1,
+                            "name": "Drive 1",
+                            "partNo": "42C0251",
+                            "serialNo": "D0A00V0C",
+                            "slotNo": 1,
+                            "type": "147GB 10K 6Gbps SAS HDD"
+                        },
+                        {
+                            "RAIDState": "Unconfigured Good",
+                            "blockSize": 512,
+                            "enclosureId": 252,
+                            "fruPartNo": "42D0633",
+                            "iType": "SAS",
+                            "id": 2,
+                            "name": "Drive 3",
+                            "partNo": "42D0636",
+                            "serialNo": "6SD4FDT7",
+                            "slotNo": 3,
+                            "type": "147GB 10K 6Gbps SAS HDD"
+                        }
+                    ],
+                    "volumeCount": 1,
+                    "volumeCountStr": "1 virtual disk"
+                },
+                {
+                    "cacheSize": 0,
+                    "createModeFlag": 0,
+                    "id": -253,
+                    "name": "ThinkSystem 7mm NVMe 2-Bay Rear RAID Enablement Kit",
+                    "pools": [
+                        {
+                            "disks": [
+                                {
+                                    "RAIDState": "Online",
+                                    "blockSize": 512,
+                                    "capacityStr": "32GB",
+                                    "enclosureId": 0,
+                                    "fruPartNo": "00YK352",
+                                    "iType": "SATA",
+                                    "id": 0,
+                                    "mType": "SSD",
+                                    "name": "M.2 - 0",
+                                    "partNo": "SSD7A20774",
+                                    "predFailCnt": 0,
+                                    "sen": 0,
+                                    "serialNo": "H69800EJ",
+                                    "slotNo": 0,
+                                    "type": "32GB M.2 SATA SSD"
+                                },
+                                {
+                                    "RAIDState": "Online",
+                                    "blockSize": 512,
+                                    "capacityStr": "32GB",
+                                    "enclosureId": 0,
+                                    "fruPartNo": "00YK352 ",
+                                    "iType": "SATA",
+                                    "id": 0,
+                                    "mType": "SSD",
+                                    "name": "M.2 - 1",
+                                    "partNo": "SSD0L20504",
+                                    "predFailCnt": 0,
+                                    "sen": 0,
+                                    "serialNo": "6380044",
+                                    "slotNo": 1,
+                                    "type": "32GB M.2 SATA SSD"
+                                }
+                            ],
+                            "freeCapacityStr": "0GB",
+                            "id": 0,
+                            "rdlvl": 2,
+                            "rdlvlstr": "RAID1",
+                            "totalCapacityStr": "3.84TB",
+                            "uid": 0,
+                            "volumes": [
+                                {
+                                    "bootable": 1,
+                                    "capacity": 60939,
+                                    "capacityStr": "59.511GB",
+                                    "id": 0,
+                                    "name": "VD_1",
+                                    "status": 3,
+                                    "statusStr": "Optimal",
+                                    "uid": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "serialNo": "",
+                    "slotNo": 5,
+                    "type": 2,
+                    "volumeCount": 1,
+                    "volumeCountStr": "1 virtual disk"
+                }
+            ],
+            "storage.id": "controllers"
+        }
+    ]
+}

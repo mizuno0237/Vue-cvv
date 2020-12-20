@@ -1,0 +1,18 @@
+{
+    "items": [
+        {
+            "cap_enable": 0, 
+            "cap_max_pwr_ac": 1100, 
+            "cap_max_pwr_dc": 1200, 
+            "cap_min_pwr_ac": 800, 
+            "cap_min_pwr_dc": 900, 
+            "cap_mode": 0, 
+            "cap_soft_pwr_ac": 650,
+            "cap_soft_pwr_dc": 700, 
+            "cap_value": 950, 
+            "is_blade": 0, 
+            "maxim_status": 1, 
+            "redun_mode": 1
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "item": [{
+        "loader_watchdog_timeout": 0,
+        "os_watchdog_timeout": 0,
+        "power_off_delay": 0
+    }]
+}

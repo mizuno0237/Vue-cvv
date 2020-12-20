@@ -1,0 +1,10 @@
+{
+    "items": [
+        {
+            "ThermalHistoryTypes": [
+                "CPU 1 and DIMM Temp",
+                "Ambient Temp"
+            ]
+        }
+    ]
+}

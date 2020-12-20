@@ -1,0 +1,122 @@
+{
+    "items": [
+        {
+            "power": [
+                {
+                    "fru_number": "Unknown", 
+                    "health_date": "", 
+                    "health_event_id": "", 
+                    "health_message": "", 
+                    "manuf_id": "Unknown", 
+                    "name": 0, 
+                    "on_duration": 0, 
+                    "part_number": "Unknown", 
+                    "power_cycles": 0, 
+                    "power_errors": 0, 
+                    "rated_power": 0, 
+                    "serial_number": "Unknown", 
+                    "serial_number_prefix": "Unknown", 
+                    "status": "Normal"
+                }, 
+				{
+                    "fru_number": "Unknown", 
+                    "health_date": "", 
+                    "health_event_id": "", 
+                    "health_message": "", 
+                    "manuf_id": "Unknown", 
+                    "name": 1, 
+                    "on_duration": 0, 
+                    "part_number": "SP50L09191", 
+                    "power_cycles": 0, 
+                    "power_errors": 0, 
+                    "rated_power": 0, 
+                    "serial_number": "Unknown", 
+                    "serial_number_prefix": "Unknown", 
+                    "status": "Normal"
+                }, 
+                {
+                    "fru_number": "XXXXXXXX", 
+                    "health_date": "", 
+                    "health_event_id": "", 
+                    "health_message": "", 
+                    "manuf_id": "ARTE", 
+                    "name": 2, 
+                    "on_duration": 0, 
+                    "part_number": "SP50L09192", 
+                    "power_cycles": 0, 
+                    "power_errors": 0, 
+                    "rated_power": 0, 
+                    "serial_number": "P1ZS68X0110", 
+                    "serial_number_prefix": "Unknown", 
+                    "status": "Normal"
+                },
+                {
+                    "fru_number": "Unknown",
+                    "health_date": "",
+                    "health_event_id": "",
+                    "health_message": "",
+                    "manuf_id": "Unknown",
+                    "name": 3,
+                    "on_duration": 0,
+                    "part_number": "SP50L09191",
+                    "power_cycles": 0,
+                    "power_errors": 0,
+                    "rated_power": 0,
+                    "serial_number": "Unknown",
+                    "serial_number_prefix": "Unknown",
+                    "status": "Normal"
+                },
+                {
+                    "fru_number": "Unknown",
+                    "health_date": "",
+                    "health_event_id": "",
+                    "health_message": "",
+                    "manuf_id": "Unknown",
+                    "name": 4,
+                    "on_duration": 0,
+                    "part_number": "SP50L09191",
+                    "power_cycles": 0,
+                    "power_errors": 0,
+                    "rated_power": 0,
+                    "serial_number": "Unknown",
+                    "serial_number_prefix": "Unknown",
+                    "status": "Normal"
+                },
+                {
+                    "fru_number": "Unknown",
+                    "health_date": "",
+                    "health_event_id": "",
+                    "health_message": "",
+                    "manuf_id": "Unknown",
+                    "name": 5,
+                    "on_duration": 0,
+                    "part_number": "SP50L09191",
+                    "power_cycles": 0,
+                    "power_errors": 0,
+                    "rated_power": 0,
+                    "serial_number": "Unknown",
+                    "serial_number_prefix": "Unknown",
+                    "status": "Normal"
+                },
+                {
+                    "fru_number": "Unknown",
+                    "health_date": "",
+                    "health_event_id": "",
+                    "health_message": "",
+                    "manuf_id": "Unknown",
+                    "name": 6,
+                    "on_duration": 0,
+                    "part_number": "SP50L09191",
+                    "power_cycles": 0,
+                    "power_errors": 0,
+                    "rated_power": 0,
+                    "serial_number": "Unknown",
+                    "serial_number_prefix": "Unknown",
+                    "status": "Normal"
+                }
+            ], 
+            "power_errors": [], 
+            "power_events": []
+        }
+    ]
+}

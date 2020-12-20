@@ -1,0 +1,16 @@
+{
+  "items": [
+{  
+  "redun_mode": 1, 
+  "estimated_usage":80,
+  "max_power_limit": 86,
+	"fail_limit": 1  
+},
+{  
+  "redun_mode": 2, 
+  "estimated_usage": 50,
+  "max_power_limit": 86,
+	"fail_limit": 0 
+    }
+  ]
+}

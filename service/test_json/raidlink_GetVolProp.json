@@ -1,0 +1,23 @@
+{
+    "items": [
+        {
+            "ap": 0,
+            "blksz": 512,
+            "capacity": 571250,
+            "cpio": 0,
+            "cpra": 0,
+            "cpwb": 0,
+            "cur_cpio": 0,
+            "cur_cpra": 0,
+            "cur_cpwb": 0,
+            "curpp": 254,
+            "dcp": 0,
+            "id": "2",
+            "maxstrip": 0,
+            "minstrip": 0,
+            "name": "VD_1",
+            "nobginit": 1,
+            "stripsize": 9
+        }
+    ]
+}

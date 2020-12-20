@@ -1,0 +1,15 @@
+{
+    "items": [
+        {
+            "cpu_pctg": 30,
+            "cpu_power_dc": 73,
+            "io_pctg": 40,
+            "mem_pctg": 90,
+            "mem_power_dc": 52,
+            "power_available": 750,
+            "sys_pctg": 70,
+            "sys_power_ac": 196,
+            "sys_power_dc": 179
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+	"item":[
+	{
+		"hotkey": ["NONE"],
+		"map":["1","F","T","G"]
+	},
+	{
+		"hotkey": ["NONE"],
+		"map":["2","G","E"]
+	},
+	{
+		"hotkey": ["NONE"],
+		"map":["6","W","M"]
+	}
+	,
+	{
+		"hotkey": ["NONE"],
+		"map":["Shift","B","V"]
+	}
+	],
+	"return":0
+}

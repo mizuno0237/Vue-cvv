@@ -8,65 +8,65 @@
                             <el-tabs v-model="activeName">
                                 <el-tab-pane label="Health Summary" name="first">
                                     <el-row>
-                                        <el-col :span="8">
-                                            <img src="../../assets/icons/cpu-dcgg.png">
+                                        <el-col :span="8" v-if="hardwareGeneralInfo.cpu.exist">
+                                            <img src="../../assets/icons/cpu-dcgg.png" v-if="hardwareGeneralInfo.cpu.hwSlotsInstall > 0">
+                                            <img src="../../assets/icons/cpu-inactive.png" v-if="hardwareGeneralInfo.cpu.hwSlotsInstall == 0">
                                             <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">CPU</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ '2' + ' / ' + '4' + ' installed'}}
+                                                {{ hardwareGeneralInfo.cpu.hwSlotsInstall + ' / ' + hardwareGeneralInfo.cpu.hwSlotsCount + ' installed'}}
                                             </div>
                                         </el-col>
-                                        <el-col :span="8">
-                                            <img src="../../assets/icons/memory-dcgg.png">
+                                        <el-col :span="8" v-if="hardwareGeneralInfo.memory.exist">
+                                            <img src="../../assets/icons/memory-dcgg.png" v-if="hardwareGeneralInfo.memory.hwSlotsInstall > 0">
+                                            <img src="../../assets/icons/memory-inactive.png" v-if="hardwareGeneralInfo.memory.hwSlotsInstall == 0">
                                             <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Memory</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ '2' + ' / ' + '4' + ' installed'}}
+                                                {{ hardwareGeneralInfo.memory.hwSlotsInstall + ' / ' + hardwareGeneralInfo.memory.hwSlotsCount + ' installed'}}
                                             </div>
                                         </el-col>
-                                        <el-col :span="8">
-                                            <img src="../../assets/icons/storage-dcgg.png">
+                                        <el-col :span="8" v-if="hardwareGeneralInfo.storage.exist">
+                                            <img src="../../assets/icons/storage-dcgg.png" v-if="hardwareGeneralInfo.storage.hwSlotsInstall > 0">
+                                            <img src="../../assets/icons/storage-inactive.png" v-if="hardwareGeneralInfo.storage.hwSlotsInstall == 0">
                                             <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Local Storage</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ '2' + ' / ' + '4' + ' installed'}}
+                                                {{ hardwareGeneralInfo.storage.hwSlotsInstall + ' / ' + hardwareGeneralInfo.storage.hwSlotsCount + ' installed'}}
                                             </div>
                                         </el-col>
                                     </el-row>
                                     <el-row>
-                                        <el-col :span="8">
-                                            <img src="../../assets/icons/pci-dcgg.png">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">CPU</router-link></div>
+                                        <el-col :span="8" v-if="hardwareGeneralInfo.pci.exist">
+                                            <img src="../../assets/icons/pci-dcgg.png" v-if="hardwareGeneralInfo.pci.hwSlotsInstall > 0">
+                                            <img src="../../assets/icons/pci-inactive.png" v-if="hardwareGeneralInfo.pci.hwSlotsInstall == 0">
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">PCI</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ '2' + ' / ' + '4' + ' installed'}}
+                                                {{ hardwareGeneralInfo.pci.hwSlotsInstall + ' / ' + hardwareGeneralInfo.pci.hwSlotsCount + ' installed'}}
                                             </div>
                                         </el-col>
-                                        <el-col :span="8">
-                                            <img src="../../assets/icons/power-supply-dcgg.png">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Memory</router-link></div>
+                                        <el-col :span="8" v-if="hardwareGeneralInfo.powerSupply.exist">
+                                            <img src="../../assets/icons/power-supply-dcgg.png" v-if="hardwareGeneralInfo.powerSupply.hwSlotsInstall > 0">
+                                            <img src="../../assets/icons/power-supply-gray.png" v-if="hardwareGeneralInfo.powerSupply.hwSlotsInstall == 0">
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Power Supply</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ '2' + ' / ' + '4' + ' installed'}}
+                                                {{ hardwareGeneralInfo.powerSupply.hwSlotsInstall + ' / ' + hardwareGeneralInfo.powerSupply.hwSlotsCount + ' installed'}}
                                             </div>
                                         </el-col>
-                                        <el-col :span="8">
-                                            <img src="../../assets/icons/fan-dcgg.png">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Local Storage</router-link></div>
+                                        <el-col :span="8" v-if="hardwareGeneralInfo.fan.exist">
+                                            <img src="../../assets/icons/fan-dcgg.png" v-if="hardwareGeneralInfo.fan.hwSlotsInstall > 0">
+                                            <img src="../../assets/icons/fan-inactive.png" v-if="hardwareGeneralInfo.fan.hwSlotsInstall == 0">
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Fan</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ '2' + ' / ' + '4' + ' installed'}}
+                                                {{ hardwareGeneralInfo.fan.hwSlotsInstall + ' / ' + hardwareGeneralInfo.fan.hwSlotsCount + ' installed'}}
                                             </div>
                                         </el-col>
                                     </el-row>
                                     <el-row>
-                                        <el-col :span="8">
+                                        <el-col :span="8" v-if="hardwareGeneralInfo.systemBoard.exist">
                                             <img src="../../assets/icons/system-board-dcgg.png">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">CPU</router-link></div>
-                                            <div class="hwInstallInfo">
-                                                {{ '2' + ' / ' + '4' + ' installed'}}
-                                            </div>
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">System Board</router-link></div>
                                         </el-col>
-                                        <el-col :span="8">
+                                        <el-col :span="8" v-if="hardwareGeneralInfo.other.exist">
                                             <img src="../../assets/icons/other-dcgg.png">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Memory</router-link></div>
-                                            <div class="hwInstallInfo">
-                                                {{ '2' + ' / ' + '4' + ' installed'}}
-                                            </div>
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Others</router-link></div>
                                         </el-col>
                                     </el-row>
                                 </el-tab-pane>
@@ -87,12 +87,113 @@
 </template>
 
 <script>
+import API from '../../api'
 export default {
     name: 'home',
     data () {
         return {
             activeName: 'first',
-            activeEvent: 0
+            activeEvent: 0,
+            hardwareGeneralInfo: {
+                "criticalCount": 0,
+                "warningCount": 0,
+                "cpu": {
+                    "msgWarningCount": 0,
+                    "msgCriticalCount": 0,
+                    "hwSlotsCount": 0,
+                    "hwSlotsInstall": 0,
+                    "msgType":0,
+                    "msgCount":0,
+                    "hwMsgList": [],
+                    'exist': false
+                },
+                "memory": {
+                    "msgWarningCount": 0,
+                    "msgCriticalCount": 0,
+                    "hwSlotsCount": 0,
+                    "hwSlotsInstall": 0,
+                    "msgType":0,
+                    "msgCount":0,
+                    "hwMsgList": [],
+                    'exist': false
+                },
+                "storage": {
+                    "msgWarningCount": 0,
+                    "msgCriticalCount": 0,
+                    "hwSlotsCount": 0,
+                    "hwSlotsInstall": 0,
+                    "msgType":0,
+                    "msgCount":0,
+                    "hwMsgList": [],
+                    'exist': false
+                },
+                "pci": {
+                    "msgWarningCount": 0,
+                    "msgCriticalCount": 0,
+                    "hwSlotsCount": 0,
+                    "hwSlotsInstall": 0,
+                    "msgType":0,
+                    "msgCount":0,
+                    "hwMsgList": [],
+                    'exist': false
+                },
+                "powerSupply": {
+                    "msgWarningCount": 0,
+                    "msgCriticalCount": 0,
+                    "hwSlotsCount": 0,
+                    "hwSlotsInstall": 0,
+                    "msgType":0,
+                    "msgCount":0,
+                    "hwMsgList": [],
+                    'exist': false
+                },
+                "fan": {
+                    "msgWarningCount": 0,
+                    "msgCriticalCount": 0,
+                    "hwSlotsCount": 0,
+                    "hwSlotsInstall": 0,
+                    "msgType":0,
+                    "msgCount":0,
+                    "hwMsgList": [],
+                    'exist': false
+                },
+                "systemBoard": {
+                    "msgWarningCount": 0,
+                    "msgCriticalCount": 0,
+                    "hwMsgList": [],
+                    'exist': false
+                },
+                "other": {
+                    "msgWarningCount": 0,
+                    "msgCriticalCount": 0,
+                    "hwMsgList": [],
+                    'exist': false
+                }
+            }
+        }
+    },
+    mounted() {
+        this.restGeneralSysInventoryInfo()
+    },
+    methods: {
+        restGeneralSysInventoryInfo: function() {
+            API.Dataset.restGeneralSysInventoryInfo({'params':'Sys_GetInvGeneral'}).then(res => {
+                res.data.items.forEach((item, index) => {
+                    let type = item.type;
+                    if(type === 'CPU'){
+                        type = 'cpu';
+                        console.log(item)
+                    } else if(type === 'ps') {
+                        type = 'powerSupply';
+                    }
+                    this.hardwareGeneralInfo[type].exist = true;
+                    this.hardwareGeneralInfo[type].hwSlotsInstall = item.install;
+                    this.hardwareGeneralInfo[type].hwSlotsCount = item.max;
+                    console.log(this.hardwareGeneralInfo[type], index)
+                })
+                this.hardwareGeneralInfo['systemBoard'].exist = true;
+                this.hardwareGeneralInfo['other'].exist = true;
+            })
         }
     }
 }

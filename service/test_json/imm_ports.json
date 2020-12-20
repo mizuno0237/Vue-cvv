@@ -1,0 +1,17 @@
+{
+    "items": [
+        {
+            "imm_services_disabled": "0", 
+            "open_ports": "22, 80, 115, 122, 161, 199, 427, 443, 546, 623, 1900, 3306, 3389, 3900, 5900, 5988, 6037, 6379, 7983, 13608, 34672, 49664, 53662, 58140", 
+            "port_cim_http": 5988, 
+            "port_cim_https": 5989, 
+            "port_http": 80, 
+            "port_https": 443, 
+            "port_remote_control": 3900, 
+            "port_snmp_agent": 161, 
+            "port_snmp_traps": 162, 
+            "port_ssh_cli": 22, 
+            "port_telnet_cli": 23
+        }
+    ]
+}

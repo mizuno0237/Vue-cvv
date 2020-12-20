@@ -1,0 +1,9 @@
+{
+    "enabled":  1, 
+	"maxfiles": 3,
+	"files": [
+        "bootcapture_6.ravc", 
+		"bootcapture_7.ravc",
+        "bootcapture_8.ravc"
+	]
+}

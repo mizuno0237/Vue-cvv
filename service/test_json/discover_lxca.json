@@ -1,0 +1,14 @@
+{
+    "target_lxca": "192.168.1.7", 
+    "lxca_list": [
+                    {
+                        "address": "lxca.DNS1.com"
+                    },
+                    {
+                        "address": "192.168.1.7"
+                    }, 
+                    {
+                        "address": "192.168.1.1"
+                    }
+                ]
+}

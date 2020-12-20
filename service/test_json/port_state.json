@@ -1,0 +1,14 @@
+{
+    "port_cim_http": 1,
+    "port_cim_https": 1,
+    "port_http": 1,
+    "port_https": 1,
+    "port_ipmi": 1,
+    "port_rest": 1,
+    "port_rp": -1,
+    "port_slp": 1,
+    "port_snmp_agent": 1,
+    "port_snmp_traps": -1,
+    "port_ssdp": 1,
+    "port_ssh": 1
+}

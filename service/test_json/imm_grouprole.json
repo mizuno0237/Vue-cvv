@@ -1,0 +1,13 @@
+{
+	"items": [{
+		"role_id": 3,
+		"role_name": "bb",
+		"group_name": "ttt",
+		"group_id": 1
+	}, {
+		"role_id": 0,
+		"role_name": "Administrator",
+		"group_name": "bb",
+		"group_id": 2
+	}]
+}

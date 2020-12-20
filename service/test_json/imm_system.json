@@ -1,0 +1,25 @@
+{
+    "items": [
+        {
+            "typemodel_label": "Machine Type-Model",
+            "MachineType": "0",
+            "UUID": "7EB9517A10CF4B9281DA0E9C34F4FFAE",
+            "machine_typemodel": "7X1925Z000",
+            "MachineName": "LENOVO THINKSYSTEM SR850 SERVER",
+            "system_events": [
+                {
+                    "system_events.index": 1,
+                    "system_events.message_more": "",
+                    "system_events.source": "System",
+                    "system_events.message": "A Fatal Bus Error has occurred on bus CPU 1 PECI.",
+                    "system_events.date": "2017-10-10T16:59:50.000",
+                    "system_events.system_id": 0,
+                    "system_events.severity": "E"
+                }
+            ],
+            "SerialNumber": "123456789A",
+            "serialno_label": "Serial Number",
+            "Model": "0"
+        }
+    ]
+}

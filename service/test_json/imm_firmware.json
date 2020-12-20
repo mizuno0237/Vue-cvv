@@ -1,0 +1,51 @@
+{
+    "items": [{
+        "build": "DVI399T",
+        "index": 1,
+        "release_date": "2020-08-31",
+        "type": 4,
+        "version": "8.06"
+    },
+    {
+        "build": "DVI399T",
+        "index": 2,
+        "release_date": "2020-08-27",
+        "type": 5,
+        "version": "8.27"
+    },
+    {
+        "build": "DVI399T",
+        "index": 3,
+        "release_date": "2020-05-07",
+        "type": 6,
+        "version": "1.00"
+    },
+    {
+        "build": "M5E103J",
+        "index": 4,
+        "release_date": "2020-05-07",
+        "type": 0,
+        "version": "1.00"
+    },
+    {
+        "build": "XWL103M",
+        "index": 5,
+        "release_date": "2020-04-26",
+        "type": 7,
+        "version": "3.00"
+    },
+    {
+        "build": "XWL301B",
+        "index": 6,
+        "release_date": "2020-04-17",
+        "type": 8,
+        "version": "3.00"
+    },
+    {
+        "build": "XWL201B",
+        "index": 7,
+        "release_date": "2020-04-17",
+        "type": 9,
+        "version": "3.00"
+    }]
+}

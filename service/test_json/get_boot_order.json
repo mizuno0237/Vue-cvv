@@ -1,0 +1,80 @@
+{
+	"items": [{
+		"mri_name": "BootOrder",
+		"devices": [{
+			"order": 1,
+			"value": "165",
+			"label": "Windows Boot Manager"
+		}, {
+			"order": 2,
+			"value": "160",
+			"label": "Red Hat Enterprise Linux"
+		}, {
+			"order": 3,
+			"value": "2",
+			"label": "CD/DVD Rom"
+		}, {
+			"order": 4,
+			"value": "1",
+			"label": "Hard Disk"
+		}, {
+			"order": 5,
+			"value": "5",
+			"label": "Network"
+		}, {
+			"order": 6,
+			"value": "4",
+			"label": "USB Storage"
+		}],
+		"setting_id": "Q3001",
+		"devices_num": 6
+	}, {
+		"mri_name": "CDDVDROMBootOrder",
+		"devices": [{
+			"order": 0,
+			"value": "65535",
+			"label": "None"
+		}],
+		"setting_id": "Q3002",
+		"devices_num": 1
+	}, {
+		"mri_name": "HardDiskBootOrder",
+		"devices": [{
+			"order": 1,
+			"value": "161",
+			"label": "UEFI:   SLOT16 (3/0/0) LITEON CV8-8E128     00Y PORT 0"
+		}],
+		"setting_id": "Q3003",
+		"devices_num": 1
+	}, {
+		"mri_name": "NetworkBootOrder",
+		"devices": [{
+			"order": 1,
+			"value": "161",
+			"label": "UEFI:   OnBoard (B3/0/0) PXE IP4  Intel(R) Ethernet Converged Network Adapter X550-T2"
+		}, {
+			"order": 2,
+			"value": "162",
+			"label": "UEFI:   OnBoard (B3/0/0) PXE IP6  Intel(R) Ethernet Converged Network Adapter X550-T2"
+		}, {
+			"order": 3,
+			"value": "163",
+			"label": "UEFI:   OnBoard (B3/0/1) PXE IP4  Intel(R) Ethernet Converged Network Adapter X550-T2"
+		}, {
+			"order": 4,
+			"value": "164",
+			"label": "UEFI:   OnBoard (B3/0/1) PXE IP6  Intel(R) Ethernet Converged Network Adapter X550-T2"
+		}],
+		"setting_id": "Q3004",
+		"devices_num": 4
+	}, {
+		"mri_name": "USBBootOrder",
+		"devices": [{
+			"order": 1,
+			"value": "161",
+			"label": "UEFI:   KingstonDataTraveler 3.0PMAP 0/14/0"
+		}],
+		"setting_id": "Q3005",
+		"devices_num": 1
+	}]
+}

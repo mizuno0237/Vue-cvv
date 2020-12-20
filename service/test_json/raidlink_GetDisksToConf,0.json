@@ -1,0 +1,56 @@
+{
+    "items": [
+        {
+            "supported_disklist": [
+                {
+                    "RAIDState": "Unconfigured Good",
+                    "blockSize": 512,
+                    "capacityStr": "128GB",
+                    "enclosureId": 0,
+                    "fruPartNo": "00YK353",
+                    "iType": "SATA",
+                    "id": 0,
+                    "mType": "SSD",
+                    "name": "M.2 - 0",
+                    "partNo": "SSD0L20505",
+                    "predFailCnt": 0,
+                    "sen": 0,
+                    "serialNo": "H638005T",
+                    "slotNo": 0,
+                    "type": "128GB M.2 SATA SSD"
+                },
+                {
+                    "RAIDState": "Unconfigured Good",
+                    "blockSize": 512,
+                    "capacityStr": "128GB",
+                    "enclosureId": 0,
+                    "fruPartNo": "00YK353",
+                    "iType": "SATA",
+                    "id": 0,
+                    "mType": "SSD",
+                    "name": "M.2 - 1",
+                    "partNo": "SSD0L20505",
+                    "predFailCnt": 0,
+                    "sen": 0,
+                    "serialNo": "H638009B",
+                    "slotNo": 1,
+                    "type": "128GB M.2 SATA SSD"
+                }
+            ],
+            "supported_raidlvl": [
+                {
+                    "maxSpan": 1,
+                    "minPd": 2,
+                    "rdlvl": 1,
+                    "rdlvlstr": "RAID 0"
+                },
+                {
+                    "maxSpan": 1,
+                    "minPd": 2,
+                    "rdlvl": 2,
+                    "rdlvlstr": "RAID 1"
+                }
+            ]
+        }
+    ]
+}

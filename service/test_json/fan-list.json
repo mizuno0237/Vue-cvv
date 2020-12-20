@@ -1,0 +1,88 @@
+{
+    "avct": [
+        {
+            "criticallower": 520, 
+            "criticalupper": 0, 
+            "fatallower": 0, 
+            "fatalupper": 0, 
+            "id": 1, 
+            "maxvalue": 16575, 
+            "noncriticallower": 0, 
+            "noncriticalupper": 0, 
+            "source": "Fan 1 Tach", 
+            "status": "Normal", 
+            "value": 8515, 
+            "valuepct": 51
+        }, 
+        {
+            "criticallower": 520, 
+            "criticalupper": 0, 
+            "fatallower": 0, 
+            "fatalupper": 0, 
+            "id": 2, 
+            "maxvalue": 16575, 
+            "noncriticallower": 0, 
+            "noncriticalupper": 0, 
+            "source": "Fan 2 Tach", 
+            "status": "Normal", 
+            "value": 8515, 
+            "valuepct": 51
+        }, 
+        {
+            "criticallower": 520, 
+            "criticalupper": 0, 
+            "fatallower": 0, 
+            "fatalupper": 0, 
+            "id": 3, 
+            "maxvalue": 16575, 
+            "noncriticallower": 0, 
+            "noncriticalupper": 0, 
+            "source": "Fan 3 Tach", 
+            "status": "Critical", 
+            "value": 0,
+            "valuepct": 0
+        }, 
+        {
+            "criticallower": 520, 
+            "criticalupper": 0, 
+            "fatallower": 0, 
+            "fatalupper": 0, 
+            "id": 4, 
+            "maxvalue": 16575, 
+            "noncriticallower": 0, 
+            "noncriticalupper": 0, 
+            "source": "Fan 4 Tach", 
+            "status": "Normal", 
+            "value": 8515, 
+            "valuepct": 51
+        }, 
+        {
+            "criticallower": 520, 
+            "criticalupper": 0, 
+            "fatallower": 0, 
+            "fatalupper": 0, 
+            "id": 5, 
+            "maxvalue": 16575, 
+            "noncriticallower": 0, 
+            "noncriticalupper": 0, 
+            "source": "Fan 5 Tach", 
+            "status": "Normal", 
+            "value": 8515, 
+            "valuepct": 51
+        }, 
+        {
+            "criticallower": 520, 
+            "criticalupper": 0, 
+            "fatallower": 0, 
+            "fatalupper": 0, 
+            "id": 6, 
+            "maxvalue": 16575, 
+            "noncriticallower": 0, 
+            "noncriticalupper": 0, 
+            "source": "Fan 6 Tach", 
+            "status": "Normal", 
+            "value": 8515, 
+            "valuepct": 51
+        }
+    ]
+}

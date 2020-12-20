@@ -1,0 +1,49 @@
+
+{
+"items": [
+        {
+            "adapterName": "Emulex VFA5.2 2x10 GbE SFP+ PCIe Adapter",
+            "fw_date": "N/A",
+            "fw_date_pend": "",
+            "fw_manufacturer": "Emulex Corporation",
+            "fw_pkg_version": "",
+            "fw_status": 0,
+            "fw_version": "11.2.1193.40",
+            "fw_version_pend": "",
+            "key": 16842754,
+            "location": 1,
+            "oobUpdFlag": 1,
+            "slotNo": 2,
+            "softwareID": "10DFE81C"
+        },
+        {
+            "adapterName": "ThinkSystem M.2 with Mirroring Enablement Kit",
+            "fw_date": "06/11/2018",
+            "fw_date_pend": "",
+            "fw_manufacturer": "Marvell",
+            "fw_pkg_version": "",
+            "fw_status": 0,
+            "fw_version": "2.3.10.1193",
+            "fw_version_pend": "",
+            "key": 16842757,
+            "location": 1,
+            "oobUpdFlag": 1,
+            "slotNo": 5,
+            "softwareID": "1D490300"
+        },{
+            "adapterName": "ThinkSystem 7mm NVMe 2-Bay Rear RAID Enablement Kit",
+            "fw_date": "06/22/2020",
+            "fw_date_pend": "",
+            "fw_manufacturer": "Marvell",
+            "fw_pkg_version": "",
+            "fw_status": 0,
+            "fw_version": "1.0.20.1046",
+            "fw_version_pend": "",
+            "key": 16842755,
+            "location": 1,
+            "oobUpdFlag": 1,
+            "slotNo": 3,
+            "softwareID": "1D490307"
+        }
+    ]
+}

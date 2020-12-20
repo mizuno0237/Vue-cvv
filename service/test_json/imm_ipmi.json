@@ -1,0 +1,9 @@
+{
+    "items": [
+        {
+            "imm_services_disabled": "0",
+            "ipmi_enabled": 1,
+            "ipmioverkcs_enabled": 1
+        }
+    ]
+}

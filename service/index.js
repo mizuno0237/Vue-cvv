@@ -40,3 +40,34 @@ app.get('/api/providers/imm_fod_tier', function(req, res) {
         "tier": 3
     })
 })
+
+app.get('/api/dataset/sys_inventory', function(req, res) {
+    console.log(req.query.params)
+    if (req.query.params == 'Sys_GetInvGeneral') {
+        fs.readFile('./test_json/Sys_GetInvGeneral.json', function(error, fileData) {
+            if (error) {
+                console.log('read err : ' + error);
+            }
+            res.json(JSON.parse(fileData));
+            console.log('send:Sys_GetInvGeneral.json');
+        });
+    } else {
+        fs.readFile('./test_json/sys_inventory.json', function(error, fileData) {
+            if (error) {
+                console.log('read err : ' + error);
+            }
+            res.json(JSON.parse(fileData));
+            console.log('send:sys_inventory.json');
+        });
+    }
+});
+
+app.get('/api/dataset/imm_properties', function(req, res) {
+    fs.readFile('./test_json/imm_properties.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:imm_properties.json');
+    });
+});

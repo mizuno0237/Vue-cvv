@@ -1,0 +1,9 @@
+{
+    "return":0,
+    "ipv4_mode":1,
+    "ipv4_addr":"10.240.216.185",
+    "ipv4_mask":"255.255.254.0",
+    "ipv6_mode":1,
+    "ipv6_addr":"fe80::020a:e4ff:fe1d:2c04",
+    "ipv6_prefix":64
+}

@@ -1,0 +1,33 @@
+{
+    "items": [{
+        "users": [{
+                "users_access": 1,
+                "users_access_effective": 1,
+                "users_auth_custom": 0,
+                "users_pass_expire": 0,
+                "users_pass_is_sha256": 0,
+                "users_pass_left_days": 90,
+                "users_pass_left_hours": 0,
+                "users_pass_left_minutes": 0,
+                "users_user_id": 1,
+                "users_user_name": "USERID"
+            }
+        ],
+        "active_sessions": [{
+            "active_sessions_address": "10.106.232.30",
+            "active_sessions_id": 0,
+            "active_sessions_type": 2,
+            "active_sessions_uid": 1
+        }, {
+            "active_sessions_address": "10.106.236.87",
+            "active_sessions_id": 1,
+            "active_sessions_type": 4,
+            "active_sessions_uid": 1
+        }, {
+            "active_sessions_address": "10.106.232.30",
+            "active_sessions_id": 2,
+            "active_sessions_type": 5,
+            "active_sessions_uid": 1
+        }]
+    }]
+}

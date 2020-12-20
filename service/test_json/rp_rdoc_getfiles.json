@@ -1,0 +1,20 @@
+{
+    "items": [
+        {
+            "domain": "",
+            "downloaded": 1,
+            "filename": "TinyCore-current.iso",
+            "filetype": 1,
+            "mountoption": "",
+            "mountpath": "",
+            "ownerName": "USERID",
+            "protocol": 7,
+            "readOnly": 1,
+            "remotepath": "",
+            "size": 16777216,
+            "slotId": 0,
+            "url": "/pstorage/ftpupload/fw/0000000004",
+            "username": ""
+        }
+    ]
+}

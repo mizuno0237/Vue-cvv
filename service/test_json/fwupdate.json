@@ -1,0 +1,26 @@
+{
+    "imm_primary": "DVI399T",
+    "imm_primary_pending_version": {
+        "return": 5
+    },
+    "uefi_current": "PRIMARY",
+    "uefi_pending": "  ",
+    "uefi_primary": "M5E103J",
+    "imm_current": "PRIMARY",
+    "imm_primary_pending_date": {
+        "return": 5
+    },
+    "imm_primary_pending_id": {
+        "return": 5
+    },
+    "imm_backup_pending_version": {
+        "return": 5
+    },
+    "imm_backup_pending_date": {
+        "return": 5
+    },
+    "imm_backup_pending_id": {
+        "return": 5
+    },
+    "imm_backup": "TEI301M"
+}

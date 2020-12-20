@@ -1,0 +1,16 @@
+{
+    "items": [
+        {
+            "filename": "vmtest.iso",
+            "pathname": "/pstorage/rdoc/vmtest.iso",
+            "filetype": 1,
+            "image_index": 4,
+            "diskid": 33,
+            "storeid": 2,
+            "flag": 1,
+            "offset": 0,
+            "format": 0,
+            "size": 12340
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "items": [
+        {
+            "fw_date": " ",
+            "input_state": 0,
+            "mfg": "ACBE",
+            "model": "FSF056",
+            "slot": 1,
+            "version": "5194"
+        },
+        {
+            "fw_date": " ",
+            "input_state": 1,
+            "mfg": "DETA",
+            "model": "DPS-1600AB-11",
+            "slot": 2,
+            "version": "5385"
+        }
+    ]
+}

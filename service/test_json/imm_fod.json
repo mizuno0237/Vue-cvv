@@ -1,0 +1,41 @@
+{
+    "items": [
+        {
+            "keys": [
+                {
+                    "constraint_type": "NO CONSTRAINTS",
+                    "feature": "Lenovo XClarity Controller Enterprise Upgrade",
+                    "id": "8f-4-dc-24-b1-38-a2-1",
+                    "identifierID": "7Y451234567890",
+                    "status": 0,
+                    "status_string": "License key is valid",
+                    "type": 53,
+                    "uses_remaining": "No Constraints",
+                    "valid_through": ""
+                },
+                {
+                    "constraint_type": "NO CONSTRAINTS",
+                    "feature": "Lenovo XClarity Controller Advanced Upgrade",
+                    "id": "b6-72-3b-68-31-bc-a6-c3",
+                    "identifierID": "7Y451234567890",
+                    "status": 0,
+                    "status_string": "License key is valid",
+                    "type": 52,
+                    "uses_remaining": "No Constraints",
+                    "valid_through": ""
+                },
+                {
+                    "constraint_type": "NO CONSTRAINTS",
+                    "feature": "Lenovo XClarity Controller Standard Upgrade",
+                    "id": "bd-2c-fa-cd-f6-e0-25-39",
+                    "identifierID": "9532DSYM01G",
+                    "status": 0,
+                    "status_string": "License key is valid",
+                    "type": 32796,
+                    "uses_remaining": "No Constraints",
+                    "valid_through": ""
+                }
+            ]
+        }
+    ]
+}
