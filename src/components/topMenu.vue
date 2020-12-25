@@ -1,6 +1,5 @@
 <template>
     <div id="immSysInfo">
-        
         <div id="sysGenInfoRight">
             <div id="immExport">Export</div>
             <div id="immUser">
@@ -18,7 +17,7 @@ export default {
     name: 'topMenu',
     data() {
         return {
-            currentTime: ''
+            currentTime: null
         }
     },
     computed:{
@@ -33,7 +32,9 @@ export default {
         systemDate() {
             API.Dataset.restSysTime().then(res => {
                 console.log(res.data);
-                this.currentTime = res.data.items['datetime_current'];
+                this.currentTime = res.data.items[0].datetime_current.substring(0,19);
+                console.log(this.currentTime);
+                console.log(this.$moment(this.currentTime).format('LT'))
             })
         }
     }

@@ -3,5 +3,6 @@
 export default {
     loginStatus: false,
     token: null,
-    tier: 1
+    tier: 1,
+    userInfo: {}
 }

@@ -93,6 +93,7 @@ export default {
     data () {
         return {
             activeName: 'first',
+            userinfo: this.$store.state.userinfo,
             activeEvent: 0,
             hardwareGeneralInfo: {
                 "criticalCount": 0,
