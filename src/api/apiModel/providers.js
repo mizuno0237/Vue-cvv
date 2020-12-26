@@ -11,3 +11,9 @@ export const restGetTire = params => {
     return response;
   });
 };
+
+export const restHeader = params => {
+  return FetchGet('/api/providers/logoninfo', params).then((response) => {
+    return response;
+  });
+};

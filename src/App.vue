@@ -58,7 +58,8 @@ body,html,#app,#appContainer,#appMain{
     }
 }
 .el-header{
-    height: 48px;
+    height: 48px!important;
+    padding: 0!important;
 }
 a{
     text-decoration:none;

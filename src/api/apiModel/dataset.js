@@ -17,3 +17,9 @@ export const restSysTime = params => {
     return response;
   });
 };
+
+export const restPowerActionList = params => {
+  return FetchGet('/api/dataset/imm_status_power', params).then((response) => {
+    return response;
+  });
+};

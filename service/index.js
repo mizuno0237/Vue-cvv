@@ -73,3 +73,23 @@ app.get('/api/dataset/imm_properties', function(req, res) {
         console.log('send:imm_properties.json');
     });
 });
+
+app.get('/api/dataset/imm_status_power', function(req, res) {
+    fs.readFile('./test_json/imm_status_power.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:imm_status_power.json');
+    })
+});
+
+app.get('/api/providers/logoninfo', function(req, res) {
+    fs.readFile('./test_json/logoninfo.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:logoninfo.json');
+    });
+});
