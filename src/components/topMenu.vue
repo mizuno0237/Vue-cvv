@@ -5,6 +5,8 @@
             <div v-if="powerState === 1"><img src="../assets/icons/power-status-on.png" alt=""/></div>
             <div v-if="ledStatus === 0"><img src="../assets/icons/led-error-off.png" alt=""/></div>
             <div v-if="ledStatus === 1"><img src="../assets/icons/led-error-on.png" alt=""/></div>
+            <div id="immMachine">{{ machineName }}</div>
+            <div id="immSystem">System name:{{ systemName }}</div>
         </div>
         <div id="sysGenInfoRight">
             <div id="immExport">
@@ -83,12 +85,23 @@ export default {
             height: 24px;
             margin-right: 10px;
         }
+        #immMachine{
+            font-size: 16px;
+            color: #666;
+            font-weight: 700;
+            line-height: 28px;
+        }
+        #immSystem{
+            font-size: 14px;
+            margin-left: 60px;
+            padding-top: 3px;
+        }
     }
     #sysGenInfoRight{
         float: right;
         display: flex;
         height: 100%;
-        width: 400px;
+        width: 370px;
         img{
             width: 16px;
             height: 16px;

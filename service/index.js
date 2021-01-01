@@ -93,3 +93,13 @@ app.get('/api/providers/logoninfo', function(req, res) {
         console.log('send:logoninfo.json');
     });
 });
+
+app.get('/api/dataset/sys_info', function(req, res) {
+    fs.readFile('./test_json/sys_info.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:sys_info.json');
+    });
+});

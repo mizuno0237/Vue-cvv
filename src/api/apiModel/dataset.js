@@ -23,3 +23,9 @@ export const restPowerActionList = params => {
     return response;
   });
 };
+
+export const restSysDetailInfo = params => {
+  return FetchGet('/api/dataset/sys_info', params).then((response) => {
+    return response;
+  });
+};

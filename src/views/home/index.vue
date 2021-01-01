@@ -76,9 +76,21 @@
                     </el-col>
                 </el-row>
             </el-col>
-            <el-col :span="12" id="SystemInfo">
+            <el-col :span="12" id="sysDetailInfo">
                 <el-col :span="24">
                     <div class="grid-content bg-purple-white">
+                        <div id="sysDetailInfoTitle">System Information and Settings</div>
+                        <ul>
+                            <li class="machineName">{{machineName}}</li>
+                            <li class="powerStatus">Machine Type/Model</li>
+                            <li class="machineType">Serial No.</li>
+                            <li class="systemName">System Name</li>
+                            <li class="frontUSBOwnership">Front USB Ownership</li>
+                            <li class="BMCLicense">BMC License</li>
+                            <li class="BMCIPAddress">BMC IP Address</li>
+                            <li class="BMCHostname">BMC Hostname</li>
+                            <li class="location">Location</li>
+                        </ul>
                     </div>
                 </el-col>
             </el-col>
@@ -95,6 +107,7 @@ export default {
             activeName: 'first',
             userinfo: this.$store.state.userinfo,
             activeEvent: 0,
+            machineName: '',
             hardwareGeneralInfo: {
                 "criticalCount": 0,
                 "warningCount": 0,
@@ -174,7 +187,8 @@ export default {
         }
     },
     mounted() {
-        this.restGeneralSysInventoryInfo()
+        this.restGeneralSysInventoryInfo();
+        this.restSysDetailInfo()
     },
     methods: {
         restGeneralSysInventoryInfo: function() {
@@ -195,6 +209,11 @@ export default {
                 this.hardwareGeneralInfo['systemBoard'].exist = true;
                 this.hardwareGeneralInfo['other'].exist = true;
             })
+        },
+        restSysDetailInfo: function(){
+            API.Dataset.restSysDetailInfo().then(res => {
+                this.machineName = res.data.machine_name
+            })
         }
     }
 }
@@ -209,6 +228,9 @@ export default {
 }
 #mainInfo{
     padding-right: 10px;
+    .el-col.el-col-24{
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    }
     .el-col.el-col-8{
         text-align: center;
         margin-top: 22px;
@@ -229,8 +251,26 @@ export default {
         }
     }
 }
-#SystemInfo{
+#sysDetailInfo{
     padding-left: 10px;
+    .el-col.el-col-24{
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    }
+    #sysDetailInfoTitle{
+        padding: 20px;
+        font-size: 14px;
+        color: #333;
+        font-weight: 700;
+    }
+    ul{
+        padding-inline-start: 20px;
+        li{
+            list-style: none;
+            height: 30px;
+            font-size: 12px;
+            color: #333;
+        }
+    }
 }
 .el-col {
     border-radius: 4px;
