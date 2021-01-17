@@ -4,5 +4,6 @@ export default {
     loginStatus: false,
     token: null,
     tier: 1,
-    userInfo: {}
+    userInfo: {},
+    powerState: null
 }

@@ -56,6 +56,7 @@ export default {
         restPowerActionList() {
             API.Dataset.restPowerActionList().then(res => {
                 this.powerState = res.data['items'][0]['power_state'];
+                this.$store.commit('changePowerState', this.powerState);
                 res.data['items'][0]['LEDs'].forEach(item => {
                     if(item.id === 0)  {
                         this.ledStatus = item.status;

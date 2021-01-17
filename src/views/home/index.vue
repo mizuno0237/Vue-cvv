@@ -81,15 +81,15 @@
                     <div class="grid-content bg-purple-white">
                         <div id="sysDetailInfoTitle">System Information and Settings</div>
                         <ul>
-                            <li class="machineName">{{machineName}}</li>
-                            <li class="powerStatus">Machine Type/Model</li>
-                            <li class="machineType">Serial No.</li>
-                            <li class="systemName">System Name</li>
-                            <li class="frontUSBOwnership">Front USB Ownership</li>
-                            <li class="BMCLicense">BMC License</li>
-                            <li class="BMCIPAddress">BMC IP Address</li>
-                            <li class="BMCHostname">BMC Hostname</li>
-                            <li class="location">Location</li>
+                            <li class="machineName"><div class="sysDetailInfoLeft">{{ machineName }}</div><div class="sysDetailInfoRight">{{ powerState }}<span></span></div></li>
+                            <li class="machineType"><div class="sysDetailInfoLeft">Machine Type/Model</div><div class="sysDetailInfoRight">{{ machineTypeModel }}</div></li>
+                            <li class="serialNo"><div class="sysDetailInfoLeft">Serial No.</div><div class="sysDetailInfoRight">{{ serialNumber }}</div></li>
+                            <li class="systemName"><div class="sysDetailInfoLeft">System Name</div><div class="sysDetailInfoRight"></div></li>
+                            <li class="frontUSBOwnership"><div class="sysDetailInfoLeft">Front USB Ownership</div><div class="sysDetailInfoRight"></div></li>
+                            <li class="BMCLicense"><div class="sysDetailInfoLeft">BMC License</div><div class="sysDetailInfoRight"></div></li>
+                            <li class="BMCIPAddress"><div class="sysDetailInfoLeft">BMC IP Address</div><div class="sysDetailInfoRight"></div></li>
+                            <li class="BMCHostname"><div class="sysDetailInfoLeft">BMC Hostname</div><div class="sysDetailInfoRight"></div></li>
+                            <li class="location"><div class="sysDetailInfoLeft">Location</div><div class="sysDetailInfoRight"></div></li>
                         </ul>
                     </div>
                 </el-col>
@@ -108,6 +108,8 @@ export default {
             userinfo: this.$store.state.userinfo,
             activeEvent: 0,
             machineName: '',
+            machineTypeModel: '',
+            serialNumber: '',
             hardwareGeneralInfo: {
                 "criticalCount": 0,
                 "warningCount": 0,
@@ -193,7 +195,7 @@ export default {
     methods: {
         restGeneralSysInventoryInfo: function() {
             API.Dataset.restGeneralSysInventoryInfo({'params':'Sys_GetInvGeneral'}).then(res => {
-                res.data.items.forEach((item, index) => {
+                res.data.items.forEach((item) => {
                     let type = item.type;
                     if(type === 'CPU'){
                         type = 'cpu';
@@ -204,7 +206,6 @@ export default {
                     this.hardwareGeneralInfo[type].exist = true;
                     this.hardwareGeneralInfo[type].hwSlotsInstall = item.install;
                     this.hardwareGeneralInfo[type].hwSlotsCount = item.max;
-                    console.log(this.hardwareGeneralInfo[type], index)
                 })
                 this.hardwareGeneralInfo['systemBoard'].exist = true;
                 this.hardwareGeneralInfo['other'].exist = true;
@@ -212,8 +213,19 @@ export default {
         },
         restSysDetailInfo: function(){
             API.Dataset.restSysDetailInfo().then(res => {
-                this.machineName = res.data.machine_name
+                this.machineName = res.data.machine_name;
+                this.machineTypeModel = res.data.machine_typemodel;
+                this.serialNumber = res.data.serial_number
             })
+        }
+    },
+    computed: {
+        powerState() {
+            if(this.$store.state.powerState === 0) {
+                return 'Power Off'
+            }else{
+                return 'Power On'
+            }
         }
     }
 }
@@ -264,11 +276,19 @@ export default {
     }
     ul{
         padding-inline-start: 20px;
+        padding-right: 20px;
         li{
             list-style: none;
             height: 30px;
             font-size: 12px;
             color: #333;
+            display: flex;
+            .sysDetailInfoLeft{
+                flex: 2;
+            }
+            .sysDetailInfoRight{
+                flex: 3;
+            }
         }
     }
 }

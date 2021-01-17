@@ -8,4 +8,7 @@ export default {
     changeTier(state, data) {
         state['tier'] = data;
     },
+    changePowerState(state, data) {
+        state['powerState'] = data;
+    }
 }

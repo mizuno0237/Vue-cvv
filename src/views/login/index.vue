@@ -7,12 +7,13 @@
                     <div id="login_right_logo_div">
                         <img src="../../assets/XCC-logo.png" alt="">
                     </div>
-                    <div class="loginUsername">
-                        <el-input v-model="username" placeholder="User name"></el-input>
-                    </div>
-                    <div class="loginPwd">
+                    <!-- <div class="loginUsername"> -->
+                        <BaseInput :disabled="false" :value="username"></BaseInput>
+                        <!-- <el-input v-model="username" placeholder="User name"></el-input> -->
+                    <!-- </div> -->
+                    <!-- <div class="loginPwd">
                         <el-input placeholder="Password" v-model="password" show-password></el-input>
-                    </div>
+                    </div> -->
                     <div class="loginErrMsg">
                         <el-alert :title="errMsg" type="info" effect="dark" v-show="errMsg !== ''" :closable="false"></el-alert>
                     </div>
@@ -26,7 +27,8 @@
 </template>
 
 <script>
-import API from '../../api'
+import API from '../../api';
+import BaseInput from '../../base/base-input/BaseInput.vue'
 export default {
     data() {
         return {
@@ -36,9 +38,11 @@ export default {
             errMsg: ''
         }
     },
+    components: {
+        BaseInput
+    },
     methods: {
         signin: function(){
-            console.log(this.$store.state.loginStatus)
             API.Login.signIn({'username':this.username,'password':this.password}).then(res => {
                 console.log(res.data);
                 // 如果有toekn
@@ -112,27 +116,27 @@ export default {
         width:400px;
     }
 }
-.loginPwd, .loginUsername {
-    height: 40px;
-    margin-bottom: 20px;
-    position: relative;
-    .el-input {
-        height: 40px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        /deep/.el-input__inner {
-            width: 300px;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            margin-left: -150px;
-        }
-        /deep/.el-input__suffix{
-            display: none;
-        }
-    }
-}
+// .loginPwd, .loginUsername {
+//     height: 40px;
+//     margin-bottom: 20px;
+//     position: relative;
+//     .el-input {
+//         height: 40px;
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         /deep/.el-input__inner {
+//             width: 300px;
+//             position: absolute;
+//             top: 0;
+//             left: 50%;
+//             margin-left: -150px;
+//         }
+//         /deep/.el-input__suffix{
+//             display: none;
+//         }
+//     }
+// }
 .loginErrMsg {
     width: 100%;
     height: 40px;
