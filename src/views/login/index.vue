@@ -28,7 +28,7 @@
 
 <script>
 import API from '../../api';
-import BaseInput from '../../base/base-input/BaseInput.vue'
+import BaseInput from '../../components/base/base-input/BaseInput.vue'
 export default {
     data() {
         return {
