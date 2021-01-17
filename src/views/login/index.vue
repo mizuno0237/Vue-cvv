@@ -1,19 +1,34 @@
 <template>
     <div style="height: 100%;">
         <el-container style="height:100%">
-            <el-aside width="58.6%">login left</el-aside>
+            <el-aside width="58.6%">
+                <img src="../../assets/login/Lenovo-logo.png" alt="" id="LenovoLogo">
+                <div id="login_left_content">
+                    <h1>{{ system_name }}</h1>
+                    <h2>{{ machine_name }}</h2>
+                    <ul>
+                        <li><div class="infoContentLeft">System Events</div><div class="infoContentRight"></div></li>
+                        <li><div class="infoContentLeft">Machine Type</div><div class="infoContentRight">{{ machine_typemodel }}</div></li>
+                        <li><div class="infoContentLeft">Serial Number</div><div class="infoContentRight">{{ serial_number }}</div></li>
+                        <li><div class="infoContentLeft">Power State</div><div class="infoContentRight">{{ powerState }}</div></li>
+                        <li><div class="infoContentLeft">BMC IP</div><div class="infoContentRight">{{ ipv4_address }}</div></li>
+                        <li><div class="infoContentLeft">Location</div><div class="infoContentRight">{{ location }}</div></li>
+                    </ul>
+                </div>
+                <div id="login_left_bottom_info">
+                    <div>
+                        <img src="../../assets/login/ThinkSystem-logo.png" alt="">
+                        <p></p>
+                    </div>
+                </div>
+            </el-aside>
             <el-container width="41.4%;">
                 <el-main>
                     <div id="login_right_logo_div">
                         <img src="../../assets/XCC-logo.png" alt="">
                     </div>
-                    <!-- <div class="loginUsername"> -->
-                        <BaseInput :disabled="false" :value="username"></BaseInput>
-                        <!-- <el-input v-model="username" placeholder="User name"></el-input> -->
-                    <!-- </div> -->
-                    <!-- <div class="loginPwd">
-                        <el-input placeholder="Password" v-model="password" show-password></el-input>
-                    </div> -->
+                        <BaseInput :disabled="false" :value.sync="username" placeholder="User name"></BaseInput>
+                        <BaseInput :disabled="false" :value.sync="password" placeholder="Password" type="password"></BaseInput>
                     <div class="loginErrMsg">
                         <el-alert :title="errMsg" type="info" effect="dark" v-show="errMsg !== ''" :closable="false"></el-alert>
                     </div>
@@ -35,14 +50,31 @@ export default {
             username: '',
             password: '',
             loginData: {},
-            errMsg: ''
+            errMsg: '',
+            system_name: '',
+            machine_name: '',
+            serial_number: '',
+            machine_typemodel: '',
+            ipv4_address: '',
+            location: ''
         }
     },
     components: {
         BaseInput
     },
+    computed: {
+        powerState() {
+            if(this.$store.state.powerState === 0) {
+                return 'On';
+            } else if(this.$store.state.powerState === 1) {
+                return 'Off';
+            } else {
+                return '';
+            }
+        }
+    },
     methods: {
-        signin: function(){
+        signin(){
             API.Login.signIn({'username':this.username,'password':this.password}).then(res => {
                 console.log(res.data);
                 // 如果有toekn
@@ -91,7 +123,26 @@ export default {
                     console.log('wrong username or password')
                 }
             });
+        },
+        restLoginSysDetailInfo() {
+            API.Providers.restHeader().then(res => {
+                this.system_name = res.data.items[0].system_name;
+                this.machine_name = res.data.items[0].machine_name;
+                this.serial_number = res.data.items[0].serial_number;
+                this.machine_typemodel = res.data.items[0].machine_typemodel;
+                this.ipv4_address = res.data.items[0].ipv4_address;
+                this.location = res.data.items[0].location;
+            })
+        },
+        restPowerActionList() {
+            API.Dataset.restPowerActionList().then(res => {
+                this.$store.commit('changePowerState', res.data['items'][0]['power_state']);
+            })
         }
+    },
+    mounted() {
+        this.restLoginSysDetailInfo();
+        this.restPowerActionList();
     }
 }
 </script>
@@ -102,8 +153,59 @@ export default {
     color: #fff;
     text-align: center;
     line-height: 200px;
+    position: relative;
+    text-align: left;
+    #LenovoLogo{
+        width: 50px;
+        height: 150px;
+        position: absolute;
+        left: 0;
+    }
+    #login_left_content{
+        width: 70%;
+        min-height: 350px;
+        position: absolute;
+        top: 140px;
+        left: 15%;
+    }
+    #login_left_bottom_info{
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        height: 100px;
+        div{
+            
+        }
+    }
+    h1{
+        line-height: 1.3;
+        height: 60px;
+        font-size: 28px;
+        margin: 0;
+    }
+    h2{
+        margin: 0;
+        line-height: 1;
+        height: 30px;
+        font-size: 20px;
+    }
+    ul{
+        margin-top: 20px;
+        position: relative;
+        li{
+            font-size: 16px;
+            line-height: 40px;
+            height: 40px;
+            display: flex;
+            .infoContentLeft{
+                flex: 4;
+            }
+            .infoContentRight{
+                flex: 3;
+            }
+        }
+    }
 }
-  
 .el-main {
     background-image: url(../../assets/login_right_bg.png);
     color: #fff;
@@ -116,31 +218,22 @@ export default {
         width:400px;
     }
 }
-// .loginPwd, .loginUsername {
-//     height: 40px;
-//     margin-bottom: 20px;
-//     position: relative;
-//     .el-input {
-//         height: 40px;
-//         position: absolute;
-//         top: 0;
-//         left: 0;
-//         /deep/.el-input__inner {
-//             width: 300px;
-//             position: absolute;
-//             top: 0;
-//             left: 50%;
-//             margin-left: -150px;
-//         }
-//         /deep/.el-input__suffix{
-//             display: none;
-//         }
-//     }
-// }
+.base-input{
+    line-height: 60px;
+    /deep/.el-input__inner{
+        height: 40px;
+        width: 300px;
+    }
+}
 .loginErrMsg {
     width: 100%;
     height: 40px;
+    margin-top: 10px;
     position: relative;
+    .el-alert--info.is-dark{
+        background-color:#f8d7da;
+        color: #721c24;
+    }
     .el-alert {
         width: 300px;
         height: 40px;
@@ -152,9 +245,14 @@ export default {
     }
 }
 .loginBtn{
+    margin-top: 20px;
     height: 40px;
+    position: relative;
     .el-button.el-button--info{
         width: 300px;
+        position: absolute;
+        left: 50%;
+        margin-left: -150px;
     }
 }
 </style>

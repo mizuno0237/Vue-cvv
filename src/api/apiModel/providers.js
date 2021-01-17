@@ -17,3 +17,9 @@ export const restHeader = params => {
     return response;
   });
 };
+
+export const restCommonInfo = params => {
+  return FetchGet('/api/providers/xccenvinfo', params).then((response) => {
+    return response;
+  });
+};

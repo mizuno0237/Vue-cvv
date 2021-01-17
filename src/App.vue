@@ -54,7 +54,7 @@ body,html,#app,#appContainer,#appMain{
     img{
         width:190px;
         height:48px;
-        margin-left: 10px;
+        // margin-left: 10px;
     }
 }
 .el-header{
