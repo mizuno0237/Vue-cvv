@@ -2,7 +2,9 @@
 	<div id="app">
         <el-container id="appContainer" v-if="loginStatus">
             <el-aside width="210px">
-                <img src="./assets/XCC-logo.png" alt="">
+                <div id="XCCLogo">
+                    <img src="./assets/XCC-logo.png" alt="">
+                </div>
                 <leftMenu></leftMenu>
             </el-aside>
             <el-container id="imm3Content">
@@ -50,12 +52,15 @@ body,html,#app,#appContainer,#appMain{
     }
 }
 .el-aside{
-    background-color: #333F4B;
-    img{
-        width:190px;
-        height:48px;
-        // margin-left: 10px;
+    #XCCLogo{
+        width: 190px;
+        margin: 0 auto;
+        img{
+            width:190px;
+            height:48px;
+        }
     }
+    background-color: #333F4B;
 }
 .el-header{
     height: 48px!important;

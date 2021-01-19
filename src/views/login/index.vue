@@ -7,23 +7,50 @@
                     <h1>{{ system_name }}</h1>
                     <h2>{{ machine_name }}</h2>
                     <ul>
-                        <li><div class="infoContentLeft">System Events</div><div class="infoContentRight"></div></li>
-                        <li><div class="infoContentLeft">Machine Type</div><div class="infoContentRight">{{ machine_typemodel }}</div></li>
-                        <li><div class="infoContentLeft">Serial Number</div><div class="infoContentRight">{{ serial_number }}</div></li>
-                        <li><div class="infoContentLeft">Power State</div><div class="infoContentRight">{{ powerState }}</div></li>
-                        <li><div class="infoContentLeft">BMC IP</div><div class="infoContentRight">{{ ipv4_address }}</div></li>
-                        <li><div class="infoContentLeft">Location</div><div class="infoContentRight">{{ location }}</div></li>
+                        <li>
+                            <div class="infoContentLeft">System Events</div>
+                            <div class="infoContentRight" v-if="criticalCount > 0 || warningCount > 0"><img src="../../assets/icons/verified=false.png" alt="">{{ criticalCount }}<img src="../../assets/icons/warning.png" alt="" id="warningEventIcon">{{ warningCount }}</div>
+                            <div class="infoContentRight" v-else>No Event</div>
+                        </li>
+                        <li>
+                            <div class="infoContentLeft">Machine Type</div>
+                            <div class="infoContentRight">{{ machine_typemodel }}</div>
+                        </li>
+                        <li>
+                            <div class="infoContentLeft">Serial Number</div>
+                            <div class="infoContentRight">{{ serial_number }}</div>
+                        </li>
+                        <li>
+                            <div class="infoContentLeft">Power State</div>
+                            <div class="infoContentRight">{{ powerState }}</div>
+                        </li>
+                        <li>
+                            <div class="infoContentLeft">BMC IP</div>
+                            <div class="infoContentRight">{{ ipv4_address }}</div>
+                        </li>
+                        <li>
+                            <div class="infoContentLeft">Location</div>
+                            <div class="infoContentRight">{{ location }}</div>
+                        </li>
                     </ul>
                 </div>
                 <div id="login_left_bottom_info">
                     <div>
-                        <img src="../../assets/login/ThinkSystem-logo.png" alt="">
-                        <p></p>
+                        <div id="ThinkSystemLogo"><img src="../../assets/login/ThinkSystem-logo.png" alt=""></div>
+                        <p>
+                            Licensed Materials - Property of Lenovo. © Copyright Lenovo and other(s) 2021.
+                            <br/>
+                            Lenovo is a trademark of Lenovo in the United States, other countries, or both.
+                        </p>
                     </div>
                 </div>
             </el-aside>
             <el-container width="41.4%;">
                 <el-main>
+                    <div id="login_right_top">
+                        <div id="login_support_browser"></div>
+                        <div id="login_support_language"></div>
+                    </div>
                     <div id="login_right_logo_div">
                         <img src="../../assets/XCC-logo.png" alt="">
                     </div>
@@ -56,7 +83,9 @@ export default {
             serial_number: '',
             machine_typemodel: '',
             ipv4_address: '',
-            location: ''
+            location: '',
+            criticalCount: 0,
+            warningCount: 0
         }
     },
     components: {
@@ -138,11 +167,23 @@ export default {
             API.Dataset.restPowerActionList().then(res => {
                 this.$store.commit('changePowerState', res.data['items'][0]['power_state']);
             })
+        },
+        restActiveEvents() {
+            API.Providers.restActiveEvents().then(res => {
+                res.data.items.forEach((item) => {
+                    if(item.severity === 'E') {
+                        this.criticalCount ++;
+                    } else if(item.severity === 'W') {
+                        this.warningCount ++;
+                    }
+                })
+            })
         }
     },
     mounted() {
         this.restLoginSysDetailInfo();
         this.restPowerActionList();
+        this.restActiveEvents();
     }
 }
 </script>
@@ -170,11 +211,26 @@ export default {
     }
     #login_left_bottom_info{
         position: absolute;
-        bottom: 30px;
+        bottom: 80px;
         width: 100%;
         height: 100px;
         div{
-            
+            #ThinkSystemLogo{
+                margin: 0 auto;
+                height: 100%;
+                width: 200px;
+                margin-bottom: 20px;
+                img{
+                    width: 200px;
+                    height: 50px;
+                }
+            }
+            height: 100%;
+            p{
+                text-align: center;
+                font-size: 12px;
+                line-height: 1;
+            }
         }
     }
     h1{
@@ -198,10 +254,18 @@ export default {
             height: 40px;
             display: flex;
             .infoContentLeft{
-                flex: 4;
+                flex: 3;
             }
             .infoContentRight{
-                flex: 3;
+                flex: 4;
+                img{
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 16px;
+                }
+                #warningEventIcon{
+                    margin-left: 16px;
+                }
             }
         }
     }
@@ -211,11 +275,21 @@ export default {
     color: #fff;
     text-align: center;
     line-height: 160px;
-}
-#login_right_logo_div{
-    img{
-        height:96px;
-        width:400px;
+    #login_right_top{
+        height: 30px;
+        margin-bottom: 70px;
+        #login_support_browser{
+            float: left;
+        }
+        #login_support_language{
+            float: right;
+        }
+    }
+    #login_right_logo_div{
+        img{
+            height:96px;
+            width:400px;
+        }
     }
 }
 .base-input{

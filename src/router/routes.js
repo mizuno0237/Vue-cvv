@@ -24,6 +24,12 @@ let routes = [{
     meta: { title: 'inventory', noCache: true }
 },
 {
+    path: '/virmedia',
+    name: 'virmedia',
+    component: resolve => require(['../views/virmedia'], resolve),
+    meta: { title: 'virmedia', noCache: true }
+},
+{
     path: '/security',
     name: 'security',
     component: resolve => require(['../views/security'], resolve),

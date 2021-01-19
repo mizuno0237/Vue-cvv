@@ -12,20 +12,24 @@
                 text-color="#fff"
                 active-text-color="#ffd04b">
                     <el-menu-item index="/home">
-                        <i><img src="../assets/icons/home-white.png" alt="" style="width: 16px;height: 16px;"/></i>
+                        <i><img src="../assets/icons/home-white.png" alt="" style=""/></i>
                         <span slot="title">Home</span>
                     </el-menu-item>
                     <el-menu-item index="/event">
-                        <i><img src="../assets/icons/events-white.png" alt="" style="width: 16px;height: 16px;"/></i>
+                        <i><img src="../assets/icons/events-white.png" alt=""/></i>
                         <span slot="title">Event</span>
                     </el-menu-item>
                     <el-menu-item index="/inventory">
-                        <i><img src="../assets/icons/inventory-white.png" alt="" style="width: 16px;height: 16px;"/></i>
+                        <i><img src="../assets/icons/inventory-white.png" alt=""/></i>
                         <span slot="title">Inventory</span>
+                    </el-menu-item>
+                    <el-menu-item index="/virmedia">
+                        <i><img src="../assets/icons/remote-control-white.png" alt=""/></i>
+                        <span slot="title">Remote Console</span>
                     </el-menu-item>
                     <el-submenu index="">
                         <template slot="title">
-                            <i><img src="../assets/icons/bmc-configuration-white.png" alt="" style="width: 16px;height: 16px;"/></i>
+                            <i><img src="../assets/icons/bmc-configuration-white.png" alt=""/></i>
                             <span>BMC Configuration</span>
                         </template>
                         <el-menu-item-group>
@@ -68,6 +72,11 @@ export default {
     display: flex;
     i{
         flex: 1;
+        padding-left: 14px;
+        img{
+            width: 16px;
+            height: 16px;
+        }
     }
     span{
         flex: 5;
@@ -75,10 +84,16 @@ export default {
     }
 }
 /deep/.el-submenu__title{
-    padding: 0!important;
+    padding: 0 0 0 14px!important;
     display: flex;
     span{
         margin: 1px 0 0 9px;
+    }
+    i{
+        img{
+            width: 16px;
+            height: 16px;
+        }
     }
 }
 .el-submenu{

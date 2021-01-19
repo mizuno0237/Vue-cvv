@@ -43,6 +43,16 @@ app.get('/api/providers/imm_fod_tier', function(req, res) {
     })
 })
 
+app.get('/api/providers/imm_active_events', function(req, res) {
+    fs.readFile('./test_json/imm_active_events.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:imm_active_events.json');
+    });
+});
+
 app.get('/api/dataset/sys_inventory', function(req, res) {
     console.log(req.query.params)
     if (req.query.params == 'Sys_GetInvGeneral') {

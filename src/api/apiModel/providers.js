@@ -23,3 +23,9 @@ export const restCommonInfo = params => {
     return response;
   });
 };
+
+export const restActiveEvents = params => {
+  return FetchGet('/api/providers/imm_active_events', params).then((response) => {
+    return response;
+  });
+};
