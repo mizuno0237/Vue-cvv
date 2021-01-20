@@ -84,7 +84,7 @@
                             <li class="machineName"><div class="sysDetailInfoLeft">{{ machineName }}</div><div class="sysDetailInfoRight">{{ powerState }}<span></span></div></li>
                             <li class="machineType"><div class="sysDetailInfoLeft">Machine Type/Model</div><div class="sysDetailInfoRight">{{ machineTypeModel }}</div></li>
                             <li class="serialNo"><div class="sysDetailInfoLeft">Serial No.</div><div class="sysDetailInfoRight">{{ serialNumber }}</div></li>
-                            <li class="systemName"><div class="sysDetailInfoLeft">System Name</div><div class="sysDetailInfoRight"></div></li>
+                            <li class="systemName"><div class="sysDetailInfoLeft">System Name</div><div class="sysDetailInfoRight">{{ systemName }}</div></li>
                             <li class="frontUSBOwnership"><div class="sysDetailInfoLeft">Front USB Ownership</div><div class="sysDetailInfoRight"></div></li>
                             <li class="BMCLicense"><div class="sysDetailInfoLeft">BMC License</div><div class="sysDetailInfoRight"></div></li>
                             <li class="BMCIPAddress"><div class="sysDetailInfoLeft">BMC IP Address</div><div class="sysDetailInfoRight"></div></li>
@@ -94,6 +94,22 @@
                     </div>
                 </el-col>
             </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="12" id="quickActionAndRP" v-if="tierInHome > 1">
+                <el-col :span="24">
+                    <div class="grid-content bg-purple-white">
+                        <div id="quickActionAndRPTitle">Remote Console Preview</div>
+                        <div id="privilegeRemoteConsole">
+                            <div><img src="" alt="" id="lastScreenSnapshot"></div>
+                            <div id="remoteSetting">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </el-col>
+            </el-col>
+            <el-col :span="12" id="utilizationInfo"></el-col>
         </el-row>
     </div>
 </template>
@@ -110,6 +126,7 @@ export default {
             machineName: '',
             machineTypeModel: '',
             serialNumber: '',
+            systemName: '',
             hardwareGeneralInfo: {
                 "criticalCount": 0,
                 "warningCount": 0,
@@ -190,10 +207,12 @@ export default {
     },
     mounted() {
         this.restGeneralSysInventoryInfo();
-        this.restSysDetailInfo()
+        this.restSysDetailInfo();
+        this.restGetTire();
+        this.restRemoteConsoleCaptureScreen();
     },
     methods: {
-        restGeneralSysInventoryInfo: function() {
+        restGeneralSysInventoryInfo() {
             API.Dataset.restGeneralSysInventoryInfo({'params':'Sys_GetInvGeneral'}).then(res => {
                 res.data.items.forEach((item) => {
                     let type = item.type;
@@ -211,21 +230,42 @@ export default {
                 this.hardwareGeneralInfo['other'].exist = true;
             })
         },
-        restSysDetailInfo: function(){
+        restSysDetailInfo() {
             API.Dataset.restSysDetailInfo().then(res => {
                 this.machineName = res.data.machine_name;
                 this.machineTypeModel = res.data.machine_typemodel;
-                this.serialNumber = res.data.serial_number
+                this.serialNumber = res.data.serial_number;
+                this.systemName = res.data.system_name;
+            })
+        },
+        restGetTire() {
+            API.Providers.restGetTire().then(res => {
+                this.$store.commit('changeTier', res.data.tier);
+                localStorage.setItem('tier', res.data.tier);
+                console.log("tier is :" + this.$store.state.tier);
+            })
+        },
+        restRemoteConsoleCaptureScreen() {
+            API.Providers.restRemoteConsoleCaptureScreen().then(res => {
+                if(res.data.return === 0) {
+                    console.log(res.data.name)
+                    API.DownloadFile.remoteConsoleCaptureScreen().then((res) => {
+                        console.log(res.data)
+                    })
+                }
             })
         }
     },
     computed: {
         powerState() {
             if(this.$store.state.powerState === 0) {
-                return 'Power Off'
+                return 'Power Off';
             }else{
-                return 'Power On'
+                return 'Power On';
             }
+        },
+        tierInHome() {
+            return this.$store.state.tier;
         }
     }
 }
@@ -290,6 +330,25 @@ export default {
                 flex: 3;
             }
         }
+    }
+}
+#quickActionAndRP {
+    margin-top: 20px;
+    padding-right: 10px;
+    .el-col.el-col-24{
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+        .grid-content{
+            height: 300px;
+        }
+    }
+    #quickActionAndRPTitle{
+        padding: 20px;
+        font-size: 14px;
+        color: #333;
+        font-weight: 700;
+    }
+    #privilegeRemoteConsole{
+        height: 160px;
     }
 }
 .el-col {

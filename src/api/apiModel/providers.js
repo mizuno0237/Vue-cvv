@@ -29,3 +29,9 @@ export const restActiveEvents = params => {
     return response;
   });
 };
+
+export const restRemoteConsoleCaptureScreen = params => {
+  return FetchGet('/api/providers/rp_screenshot', params).then((response) => {
+    return response;
+  });
+};

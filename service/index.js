@@ -113,3 +113,18 @@ app.get('/api/dataset/sys_info', function(req, res) {
         console.log('send:sys_info.json');
     });
 });
+
+app.get('/download/Mini_ScreenShot.png', function(req, res, next) {
+
+    res.download('./test_json/download/miniscreen.png');
+});
+
+app.get('/api/providers/rp_screenshot', function(req, res) {
+    fs.readFile('./test_json/rp_screenshot.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:rp_screenshot.json');
+    });
+});
