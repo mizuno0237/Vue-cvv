@@ -2,8 +2,8 @@ import {
   FetchGet
 } from '../http';
 
-export const remoteConsoleCaptureScreen = params => {
-  return FetchGet('/download/HostScreenShot.png', params).then((response) => {
+export const remoteConsoleCaptureScreen = randomNum => {
+  return FetchGet('/download/Mini_ScreenShot.png?t=', randomNum).then((response) => {
     return response;
   });
 };

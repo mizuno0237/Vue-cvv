@@ -101,7 +101,9 @@
                     <div class="grid-content bg-purple-white">
                         <div id="quickActionAndRPTitle">Remote Console Preview</div>
                         <div id="privilegeRemoteConsole">
-                            <div><img src="" alt="" id="lastScreenSnapshot"></div>
+                            <div>
+                                <img src="" alt="" id="lastScreenSnapshot">
+                            </div>
                             <div id="remoteSetting">
                                 
                             </div>
@@ -248,9 +250,9 @@ export default {
         restRemoteConsoleCaptureScreen() {
             API.Providers.restRemoteConsoleCaptureScreen().then(res => {
                 if(res.data.return === 0) {
-                    console.log(res.data.name)
-                    API.DownloadFile.remoteConsoleCaptureScreen().then((res) => {
-                        console.log(res.data)
+                    API.DownloadFile.remoteConsoleCaptureScreen((new Date()).valueOf()).then((res) => {
+                        let reader = new FileReader();
+                        reader.readAsDataURL(res.data);
                     })
                 }
             })

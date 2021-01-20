@@ -9,6 +9,15 @@ module.exports={
                     '^/api': '/api'
                 }
                 
+            },
+            '/download': {
+                target: 'http://localhost:3000',
+                ws: true,
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/download': '/download'
+                }
+                
             }
         }
 
