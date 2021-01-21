@@ -8,7 +8,6 @@ module.exports={
                 pathRewrite: {
                     '^/api': '/api'
                 }
-                
             },
             '/download': {
                 target: 'http://localhost:3000',
@@ -17,9 +16,7 @@ module.exports={
                 pathRewrite: {
                     '^/download': '/download'
                 }
-                
             }
         }
-
     }
 }

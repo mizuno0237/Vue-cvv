@@ -28,7 +28,7 @@ Router.prototype.push = function push(location) {
 
 router.beforeEach((to, from, next) => {
     if(sessionStorage.getItem('token')) {
-        console.log('有token');
+        console.log('have token');
         store.commit('setToken', sessionStorage.getItem('token'));
         store.commit('changeLoginStatus', true);
         if (next.path === '/login') {
@@ -37,7 +37,7 @@ router.beforeEach((to, from, next) => {
             next()
         }
     } else {
-        console.log('没有token');
+        console.log('no token');
         store.commit('setToken', '');
         if (to.path === '/login') {
            next()

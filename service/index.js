@@ -128,3 +128,23 @@ app.get('/api/providers/rp_screenshot', function(req, res) {
         console.log('send:rp_screenshot.json');
     });
 });
+
+app.get('/api/providers/rp_session', function(req, res) {
+    fs.readFile('./test_json/rp_session_get.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:rp_session_get.json');
+    });
+});
+
+app.post('/api/providers/rp_session', function(req, res) {
+    fs.readFile('./test_json/rp_session_post.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:rp_session_post.json');
+    });
+});

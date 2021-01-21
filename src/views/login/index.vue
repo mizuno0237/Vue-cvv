@@ -144,7 +144,6 @@ export default {
                             console.log(res.data);
                             this.$store.commit('changeTier', res.data.tier);
                             localStorage.setItem('tier', res.data.tier);
-                            console.log("tier is :" + this.$store.state.tier);
                         })
                         this.$router.push({ path:'/home'})
                     }

@@ -89,6 +89,8 @@
                             <li class="BMCLicense"><div class="sysDetailInfoLeft">BMC License</div><div class="sysDetailInfoRight"></div></li>
                             <li class="BMCIPAddress"><div class="sysDetailInfoLeft">BMC IP Address</div><div class="sysDetailInfoRight"></div></li>
                             <li class="BMCHostname"><div class="sysDetailInfoLeft">BMC Hostname</div><div class="sysDetailInfoRight"></div></li>
+                            <li class="UEFIVersion"><div class="sysDetailInfoLeft">UEFI Version</div><div class="sysDetailInfoRight"></div></li>
+                            <li class="LXPMVersion"><div class="sysDetailInfoLeft">LXPM Version</div><div class="sysDetailInfoRight"></div></li>
                             <li class="location"><div class="sysDetailInfoLeft">Location</div><div class="sysDetailInfoRight"></div></li>
                         </ul>
                     </div>
@@ -101,11 +103,25 @@
                     <div class="grid-content bg-purple-white">
                         <div id="quickActionAndRPTitle">Remote Console Preview</div>
                         <div id="privilegeRemoteConsole">
-                            <div>
-                                <img src="" alt="" id="lastScreenSnapshot">
+                            <div id="remoteConsoleImg">
+                                <img src="../../assets/remote_screen_shutdown.png" alt="" id="lastScreenSnapshot" ref="lastScreenSnapshot">
+                                <div id="clickAndRunIcon" title="Launch Remote Console" @click="ifShowLanuchRP = true; showLanuchRP()"></div>
                             </div>
                             <div id="remoteSetting">
-                                
+                                <ul>
+                                    <li>
+                                        <div class="commonIconBlueBorder"><img src="../../assets/icons/capture-screen-black.png" alt=""><span>Capture Screen</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="commonIconBlueBorder"><img src="../../assets/icons/settings-black.png" alt=""><span>Settings</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="commonIconBlueBorder"><img src="../../assets/icons/last-boot-videos-black.png" alt=""><span>Recorded Videos</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="commonIconBlueBorder"><img src="../../assets/icons/latest-failure-screen-black.png" alt=""><span>Latest Failure Screen</span></div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -113,6 +129,18 @@
             </el-col>
             <el-col :span="12" id="utilizationInfo"></el-col>
         </el-row>
+        <el-dialog
+            id="lanuchRPDialog"
+            title="Remote Console Settings"
+            :visible.sync="ifShowLanuchRP"
+            width="35%"
+            center>
+            <span>Select the access mode:</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="ifShowLanuchRP = false; startLaunch();">Launch Remote Console</el-button>
+                <el-button @click="ifShowLanuchRP = false">Cancel</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -129,6 +157,10 @@ export default {
             machineTypeModel: '',
             serialNumber: '',
             systemName: '',
+            ifShowLanuchRP: false,
+            ifAllowDisconnect: true,
+            ifAllowPreempt: 1,
+            sessionNoActionTimeout: 5,
             hardwareGeneralInfo: {
                 "criticalCount": 0,
                 "warningCount": 0,
@@ -220,7 +252,6 @@ export default {
                     let type = item.type;
                     if(type === 'CPU'){
                         type = 'cpu';
-                        console.log(item)
                     } else if(type === 'ps') {
                         type = 'powerSupply';
                     }
@@ -234,10 +265,10 @@ export default {
         },
         restSysDetailInfo() {
             API.Dataset.restSysDetailInfo().then(res => {
-                this.machineName = res.data.machine_name;
-                this.machineTypeModel = res.data.machine_typemodel;
-                this.serialNumber = res.data.serial_number;
-                this.systemName = res.data.system_name;
+                this.machineName = res.data.items[0].machine_name;
+                this.machineTypeModel = res.data.items[0].machine_typemodel;
+                this.serialNumber = res.data.items[0].serial_number;
+                this.systemName = res.data.items[0].system_name;
             })
         },
         restGetTire() {
@@ -250,11 +281,60 @@ export default {
         restRemoteConsoleCaptureScreen() {
             API.Providers.restRemoteConsoleCaptureScreen().then(res => {
                 if(res.data.return === 0) {
-                    API.DownloadFile.remoteConsoleCaptureScreen((new Date()).valueOf()).then((res) => {
-                        let reader = new FileReader();
-                        reader.readAsDataURL(res.data);
+                    const lastScreenSnapshot= this.$refs.lastScreenSnapshot;
+                    const date = (new Date()).valueOf();
+                    this.getImageBlob("/download/Mini_ScreenShot.png?t=" + date, res => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(res);
+                        reader.onload = function(e) {
+                            var data = e.target.result.split(';');
+                            lastScreenSnapshot.src = "data:application/octet-stream;"+data[1];
+                        }
+                    }, () => {
+                        lastScreenSnapshot.src = "../../assets/remote_screen_shutdown.png";
                     })
                 }
+            })
+        },
+        getImageBlob(url, cb, errFunc) {
+            const xhr  = new XMLHttpRequest();
+            xhr.open("get", url, true);
+            xhr.responseType = "blob";
+            xhr.setRequestHeader("Content-type", "application/octet-stream");
+            xhr.setRequestHeader("Authorization", 'Bearer ' + this.$store.state.token);
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    if(cb) {
+                        cb(this.response);
+                    }
+                }
+            };
+            xhr.onerror = function(){
+                if(errFunc){
+                    errFunc();
+                }
+            };
+            xhr.send();
+        },
+        // open Launch Remote Console dialog
+        showLanuchRP() {
+            API.Providers.getRpSession().then(res => {
+                this.ifAllowPreempt = res.data.enabled;
+                this.sessionNoActionTimeout = res.data.timeout;
+            })
+        },
+        // click Launch Remote Console button
+        startLaunch() {
+            if(this.tierInHome === 1) {
+                this.$message({
+                    showClose: true,
+                    message: 'Remote console cannot be enabled due to low level certificate.',
+                    type: 'warning'
+                });
+                return;
+            }
+            API.Providers.restRpSession({'Preempt': this.ifAllowDisconnect ? 1 : 0,"Timeout": this.sessionNoActionTimeout}).then(res => {
+                console.log(res.data)
             })
         }
     },
@@ -351,6 +431,52 @@ export default {
     }
     #privilegeRemoteConsole{
         height: 160px;
+        width: 94%;
+        margin-left: 3%;
+        padding: 0 10px;
+        display: flex;
+        #remoteConsoleImg{
+            position: relative;
+            #clickAndRunIcon{
+                position: absolute;
+                width: 72px;
+                height: 72px;
+                background-image: url(../../assets/icons/remote-control-big-dccg.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                top: 38px;
+                left: 66px;
+                cursor: pointer;
+            }
+            #clickAndRunIcon:hover{
+                background-image: url(../../assets/icons/remote-control-big-mouseover.png);
+            }
+            #lastScreenSnapshot{
+                height: 150px;
+                width: 200px;
+            }
+        }
+        #remoteSetting{
+            margin-left: 10px;
+            ul{
+                height: 160px;
+                margin-left: 15px;
+                li{
+                    list-style: none;
+                    height: 25%;
+                    font-size: 14px;
+                    div{
+                        width: 100%;
+                        display: flex;
+                        img{
+                            width: 16px;
+                            height: 16px;
+                            margin-right: 15px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 .el-col {
@@ -361,6 +487,11 @@ export default {
     }
     .bg-purple-white {
         background: #fff;
+    }
+}
+#lanuchRPDialog{
+    .el-button--primary{
+        background: rgb(51,63,75);
     }
 }
 </style>

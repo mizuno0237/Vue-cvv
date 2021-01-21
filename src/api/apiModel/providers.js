@@ -1,5 +1,6 @@
 import {
-  FetchGet
+  FetchGet,
+  FetchPost
 } from '../http';
 /**
  * providers
@@ -32,6 +33,18 @@ export const restActiveEvents = params => {
 
 export const restRemoteConsoleCaptureScreen = params => {
   return FetchGet('/api/providers/rp_screenshot', params).then((response) => {
+    return response;
+  });
+};
+
+export const restRpSession = params => {
+  return FetchPost('/api/providers/rp_session', params).then((response) => {
+    return response;
+  });
+};
+
+export const getRpSession = params => {
+  return FetchGet('/api/providers/rp_session', params).then((response) => {
     return response;
   });
 };
