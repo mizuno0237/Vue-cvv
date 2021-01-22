@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-        <el-container id="appContainer" v-if="loginStatus">
+        <el-container id="appContainer" v-if="loginStatus && routePath !== '/remote'">
             <el-aside width="210px">
                 <div id="XCCLogo">
                     <img src="./assets/XCC-logo.png" alt="">
@@ -31,7 +31,10 @@ export default {
 	},
     computed:{
         loginStatus() {
-            return this.$store.state.loginStatus
+            return this.$store.state.loginStatus;
+        },
+        routePath() {
+            return this.$route.path;
         }
     },
     components:{

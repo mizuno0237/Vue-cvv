@@ -355,6 +355,11 @@ export default {
                 }
             })
         },
+        restRemoteConsoleKvmStatusPreempt() {
+            API.Providers.restRemoteConsoleKvmStatusPreempt().then(res => {
+                console.log(res.data);
+            })
+        },
         // open Launch Remote Console dialog
         showLanuchRP() {
             this.getRpSession();
@@ -372,8 +377,17 @@ export default {
             }
             this.postRpSession();
             console.log(this.userInfo);
-            setCookie(this.userInfo + 'remoteConsoleSessionMode', this.remoteConsoleSessionMode);
-            setCookie(this.userInfo + 'remoteConsoleEncrypt', this.ifEncrypt);
+            setCookie(this.userInfo.username + 'remoteConsoleSessionMode', this.remoteConsoleSessionMode);
+            setCookie(this.userInfo.username + 'remoteConsoleEncrypt', this.ifEncrypt);
+            this.tryLaunchingRemoteConsole();
+        },
+        tryLaunchingRemoteConsole() {
+            this.doLaunchRemoteConsole();
+        },
+        doLaunchRemoteConsole() {
+            console.log('do Launch Remote Console');
+            let routeData = this.$router.resolve({ path: '/remote'});
+            window.open(routeData.href, '_blank');
         }
     },
     computed: {

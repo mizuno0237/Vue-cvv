@@ -158,3 +158,13 @@ app.get('/api/providers/sessioninfo', function(req, res) {
         console.log('send:sessioninfo.json');
     });
 });
+
+app.post('/api/providers/rp_kvm_preemptstatus', function(req, res) {
+    fs.readFile('./test_json/rp_kvm_preemptstatus.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:rp_kvm_preemptstatus.json');
+    });
+});

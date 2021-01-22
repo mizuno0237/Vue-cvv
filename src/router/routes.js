@@ -30,6 +30,12 @@ let routes = [{
     meta: { title: 'virmedia', noCache: true }
 },
 {
+    path: '/remote',
+    name: 'remote',
+    component: resolve => require(['../views/remote'], resolve),
+    meta: { title: 'remote', noCache: true }
+},
+{
     path: '/security',
     name: 'security',
     component: resolve => require(['../views/security'], resolve),
