@@ -29,13 +29,13 @@
 </template>
 
 <script>
-import API from '../api'
+import API from '../api';
 export default {
     name: 'topMenu',
     data() {
         return {
             currentTime: null,
-            username: 'USERID',
+            username: '',
             powerState: null,
             ledStatus: null,
             machineName: '',
@@ -46,8 +46,15 @@ export default {
         this.systemDate();
         this.restPowerActionList();
         this.restHeader();
+        this.getCurrentUser();
     },
     methods: {
+        getCurrentUser() {
+            API.Providers.restGeneralInfo().then(res => {
+                this.username = res.data.username;
+                this.$store.commit('changeUserInfo', res.data);
+            })
+        },
         systemDate() {
             API.Dataset.restSysTime().then(res => {
                 this.currentTime = this.$moment(res.data.items[0].datetime_current.substring(0,19)).format('LT');

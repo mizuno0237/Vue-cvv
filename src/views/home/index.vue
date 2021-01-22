@@ -145,13 +145,18 @@
 </template>
 
 <script>
-import API from '../../api'
+import API from '../../api';
+import {
+    getCookie,
+    setCookie
+} from '../../util/cookie.js';
 export default {
     name: 'home',
     data () {
         return {
             activeName: 'first',
-            userinfo: this.$store.state.userinfo,
+            remoteConsoleSessionMode: '',
+            ifEncrypt: '',
             activeEvent: 0,
             machineName: '',
             machineTypeModel: '',
@@ -246,6 +251,20 @@ export default {
         this.restRemoteConsoleCaptureScreen();
     },
     methods: {
+        initRemoteConsoleSettingCtrl() {
+            if(undefined !== getCookie('remoteConsoleSessionMode')) {
+                this.remoteConsoleSessionMode = this.loginInfo.userName + getCookie('remoteConsoleSessionMode');
+            } else if(this.tierInHome ===  2) {
+                this.remoteConsoleSessionMode = 'single';
+            } else if(this.tierInHome ===  3) {
+                this.remoteConsoleSessionMode = 'multi';
+            }
+            if(undefined !== getCookie('remoteConsoleEncrypt')) {
+                this.ifEncrypt = getCookie('remoteConsoleEncrypt')
+            } else {
+                this.ifEncrypt = false;
+            }
+        },
         restGeneralSysInventoryInfo() {
             API.Dataset.restGeneralSysInventoryInfo({'params':'Sys_GetInvGeneral'}).then(res => {
                 res.data.items.forEach((item) => {
@@ -316,12 +335,30 @@ export default {
             };
             xhr.send();
         },
-        // open Launch Remote Console dialog
-        showLanuchRP() {
+        getRpSession() {
             API.Providers.getRpSession().then(res => {
                 this.ifAllowPreempt = res.data.enabled;
                 this.sessionNoActionTimeout = res.data.timeout;
+                this.ifAllowDisconnect = res.data.enabled === 1 ? true:false;
             })
+        },
+        postRpSession() {
+            API.Providers.restRpSession({'Preempt': this.ifAllowDisconnect ? 1 : 0,"Timeout": this.sessionNoActionTimeout}).then(res => {
+                if(res.data.return === 0) {
+                    console.log("Config Remote session data success");
+                } else{
+                    this.$message({
+                        showClose: true,
+                        message: 'Failed to configure Remote console session data!',
+                        type: 'warning'
+                    });
+                }
+            })
+        },
+        // open Launch Remote Console dialog
+        showLanuchRP() {
+            this.getRpSession();
+            this.initRemoteConsoleSettingCtrl();
         },
         // click Launch Remote Console button
         startLaunch() {
@@ -333,9 +370,10 @@ export default {
                 });
                 return;
             }
-            API.Providers.restRpSession({'Preempt': this.ifAllowDisconnect ? 1 : 0,"Timeout": this.sessionNoActionTimeout}).then(res => {
-                console.log(res.data)
-            })
+            this.postRpSession();
+            console.log(this.userInfo);
+            setCookie(this.userInfo + 'remoteConsoleSessionMode', this.remoteConsoleSessionMode);
+            setCookie(this.userInfo + 'remoteConsoleEncrypt', this.ifEncrypt);
         }
     },
     computed: {
@@ -348,6 +386,9 @@ export default {
         },
         tierInHome() {
             return this.$store.state.tier;
+        },
+        userInfo() {
+            return this.$store.state.userInfo;
         }
     }
 }

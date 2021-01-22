@@ -135,13 +135,13 @@ export default {
                     }
                     else{
                         //login succeed
-                        localStorage.setItem('usrInfo', JSON.stringify(this.loginData));
-                        sessionStorage.setItem('usrInfo', JSON.stringify(this.loginData));
+                        localStorage.setItem('loginInfo', JSON.stringify(this.loginData));
+                        sessionStorage.setItem('loginInfo', JSON.stringify(this.loginData));
                         sessionStorage.setItem('token', this.loginData['token']);
                         this.$store.commit('changeLoginStatus', true);
+                        this.$store.commit('changeLoginInfo', this.loginData);
                         localStorage.setItem('tier', 1);
                         API.Providers.restGetTire().then(res => {
-                            console.log(res.data);
                             this.$store.commit('changeTier', res.data.tier);
                             localStorage.setItem('tier', res.data.tier);
                         })

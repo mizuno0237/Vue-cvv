@@ -48,3 +48,9 @@ export const getRpSession = params => {
     return response;
   });
 };
+
+export const restGeneralInfo = params => {
+  return FetchGet('/api/providers/sessioninfo', params).then((response) => {
+    return response;
+  });
+};

@@ -1,5 +1,7 @@
+import * as Static from './mutations_type';
+
 export default {
-    setToken(state, data) {
+    [Static.setToken](state, data) {
         state['token'] = data;
     },
     changeLoginStatus(state, data) {
@@ -10,5 +12,11 @@ export default {
     },
     changePowerState(state, data) {
         state['powerState'] = data;
+    },
+    [Static.changeLoginInfo](state, data) {
+        state['loginInfo'] = data;
+    },
+    [Static.changeUserInfo](state, data) {
+        state['userInfo'] = data;
     }
 }

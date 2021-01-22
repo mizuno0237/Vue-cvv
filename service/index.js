@@ -148,3 +148,13 @@ app.post('/api/providers/rp_session', function(req, res) {
         console.log('send:rp_session_post.json');
     });
 });
+
+app.get('/api/providers/sessioninfo', function(req, res) {
+    fs.readFile('./test_json/sessioninfo.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:sessioninfo.json');
+    });
+});
