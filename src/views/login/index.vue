@@ -160,10 +160,6 @@ export default {
                 this.machine_typemodel = res.data.items[0].machine_typemodel;
                 this.ipv4_address = res.data.items[0].ipv4_address;
                 this.location = res.data.items[0].location;
-            })
-        },
-        restPowerActionList() {
-            API.Dataset.restPowerActionList().then(res => {
                 this.$store.commit('changePowerState', res.data['items'][0]['power_state']);
             })
         },
@@ -181,7 +177,6 @@ export default {
     },
     mounted() {
         this.restLoginSysDetailInfo();
-        this.restPowerActionList();
         this.restActiveEvents();
     }
 }
