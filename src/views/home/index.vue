@@ -70,7 +70,27 @@
                                         </el-col>
                                     </el-row>
                                 </el-tab-pane>
-                                <el-tab-pane :label="'Active System Events('+activeEvent+')'" name="second">Active System Events ({{activeEvent}})</el-tab-pane>
+                                <el-tab-pane :label="'Active System Events('+activeEventCount+')'" name="second">
+                                    <ul id="activeEventList">
+                                        <li v-for="item in activeEventList" :key="item.eventid">
+                                            <i class="activeEventListIcon" v-if="item.severity === 'E'">
+                                                <img src="../../assets/icons/error.png" alt=""/>
+                                            </i>
+                                            <i class="activeEventListIcon" v-if="item.severity === 'W'">
+                                                <img src="../../assets/icons/warning.png" alt=""/>
+                                            </i>
+                                            <span class="activeEventSource">{{ item.source }}</span>
+                                            <div class="activeEventInfo">
+                                                <div class="activeEventInfoTop">{{ item.message }}</div>
+                                                <div class="activeEventInfoBottom">
+                                                    <span class="activeEventCmnid">{{ item.cmnid }}</span>
+                                                    <span class="activeEventFru">FRU: </span>
+                                                    <span class="activeEventDate">{{ item.date }}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </el-tab-pane>
                             </el-tabs>
                         </div>
                     </el-col>
@@ -146,6 +166,7 @@
 
 <script>
 import API from '../../api';
+import $moment from 'moment';
 import {
     getCookie,
     setCookie
@@ -157,7 +178,8 @@ export default {
             activeName: 'first',
             remoteConsoleSessionMode: '',
             ifEncrypt: '',
-            activeEvent: 0,
+            activeEventCount: 0,
+            activeEventList: 0,
             machineName: '',
             machineTypeModel: '',
             serialNumber: '',
@@ -245,12 +267,24 @@ export default {
         }
     },
     mounted() {
+        this.restActiveEvents();
         this.restGeneralSysInventoryInfo();
         this.restSysDetailInfo();
         this.restGetTire();
         this.restRemoteConsoleCaptureScreen();
     },
     methods: {
+        restActiveEvents() {
+            API.Providers.restActiveEvents().then(res => {
+                this.activeEventCount = res.data.items.length;
+                console.log(res.data.items);
+                this.activeEventList = res.data.items;
+                console.log($moment);
+                this.activeEventList.forEach(item => {
+                    console.log(item.date);
+                })
+            })
+        },
         initRemoteConsoleSettingCtrl() {
             if(undefined !== getCookie('remoteConsoleSessionMode')) {
                 this.remoteConsoleSessionMode = this.loginInfo.userName + getCookie('remoteConsoleSessionMode');
@@ -547,6 +581,44 @@ export default {
 #lanuchRPDialog{
     .el-button--primary{
         background: rgb(51,63,75);
+    }
+}
+#activeEventList{
+    li{
+        display: flex;
+        font-size: 13px;
+        height: 50px;
+        .activeEventListIcon{
+            flex: 1;
+            img{
+                width: 16px;
+                height: 16px;
+            }
+        }
+        .activeEventSource{
+            flex: 2;
+        }
+        .activeEventInfo{
+            flex: 7;
+            .activeEventInfoTop{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .activeEventInfoBottom{
+                display: flex;
+                color: #999;
+                .activeEventCmnid{
+                    flex: 3;
+                }
+                .activeEventFru{
+                    flex: 2;
+                }
+                .activeEventDate{
+                    flex: 5;
+                }
+            }
+        }
     }
 }
 </style>

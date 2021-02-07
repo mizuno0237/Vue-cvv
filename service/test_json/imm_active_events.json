@@ -2,93 +2,27 @@
     "items": [
         {
             "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
+            "date": "2021-02-04T10:05:08.511",
             "eventid": "806F011B0701FFFF",
             "message": "The connector Front VGA Detect has encountered a configuration error.",
             "severity": "E",
             "source": "cooling"
         },
         {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
+            "cmnid": "FQXSFMA0029L",
+            "date": "2021-02-03T10:05:08.511",
             "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
-            "severity": "E",
-            "source": "processors"
-        },
-        {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
-            "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
+            "message": "The Low PFA Threshold limit has been exceeded on DIMM 3. 196B44F4-VC20",
             "severity": "W",
-            "source": "processors"
+            "source": "cooling"
         },
         {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
+            "cmnid": "FQXSPUN0026G",
+            "date": "2021-02-03T01:14:08.511",
             "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
+            "message": "Device Phy Presence Jmp has been added.",
             "severity": "W",
-            "source": "memory"
-        },
-        {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
-            "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
-            "severity": "W",
-            "source": "memory"
-        },
-        {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
-            "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
-            "severity": "E",
-            "source": "pci"
-        },
-        {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
-            "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
-            "severity": "E",
-            "source": "System"
-        },
-        {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
-            "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
-            "severity": "E",
-            "source": "board"
-        },
-        {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
-            "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
-            "severity": "E",
-            "source": "System"
-        },
-        {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
-            "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
-            "severity": "E",
-            "source": "System"
-        },
-        {
-            "cmnid": "FQXSPIO0001L",
-            "date": "2016-09-02T10:05:08.511",
-            "eventid": "806F011B0701FFFF",
-            "message": "The connector Front VGA Detect has encountered a configuration error.",
-            "severity": "E",
-            "source": "System"
+            "source": "cooling"
         }
-
-
     ]
 }

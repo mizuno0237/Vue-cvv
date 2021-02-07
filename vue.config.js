@@ -2,7 +2,7 @@ module.exports={
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://localhost:4000',
+                target: 'http://localhost:3000',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -10,7 +10,7 @@ module.exports={
                 }
             },
             '/download': {
-                target: 'http://localhost:4000',
+                target: 'http://localhost:3000',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
