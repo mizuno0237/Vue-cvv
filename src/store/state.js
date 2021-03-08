@@ -6,5 +6,6 @@ export default {
     tier: 1,
     loginInfo: {},
     powerState: null,
-    userInfo: {}
+    userInfo: {},
+    ifMountLocalMedia: null
 }

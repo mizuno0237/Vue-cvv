@@ -168,3 +168,13 @@ app.post('/api/providers/rp_kvm_preemptstatus', function(req, res) {
         console.log('send:rp_kvm_preemptstatus.json');
     });
 });
+
+app.get('/api/dataset/imm_ports', function(req, res) {
+    fs.readFile('./test_json/imm_ports.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:imm_ports.json');
+    });
+})

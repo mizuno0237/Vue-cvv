@@ -13,6 +13,9 @@ export default {
     changePowerState(state, data) {
         state['powerState'] = data;
     },
+    changeIfMountLocalMedia(state, data) {
+        state['ifMountLocalMedia'] = data;
+    },
     [Static.changeLoginInfo](state, data) {
         state['loginInfo'] = data;
     },

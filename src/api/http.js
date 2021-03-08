@@ -20,6 +20,16 @@ export const oXHRHeadrsFormData = {
     'Content-Type': 'multipart/form-data'
   }
 };
+
+axios.interceptors.request.use(
+    config => {
+        if (sessionStorage.token) {
+            config.headers.Authorization = 'Bearer ' + sessionStorage.token
+        }
+        return config
+    }
+)
+
 export function FetchGet(url, params = {}, headers) {
   return new Promise((resolve, reject) => {
     axios.get(url, {

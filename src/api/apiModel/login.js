@@ -1,6 +1,5 @@
 import {
-  FetchPost,
-  QS
+  FetchPost
 } from '../http';
 /**
  * login
@@ -8,7 +7,7 @@ import {
  * @returns {Promise} 返回一个promise
  */
 export const signIn = params => {
-  return FetchPost('/api/login', QS.stringify(params)).then((response) => {
+  return FetchPost('/api/login', params).then((response) => {
     return response;
   });
 };

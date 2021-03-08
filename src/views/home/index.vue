@@ -72,7 +72,7 @@
                                 </el-tab-pane>
                                 <el-tab-pane :label="'Active System Events('+activeEventCount+')'" name="second">
                                     <ul id="activeEventList">
-                                        <li v-for="item in activeEventList" :key="item.eventid">
+                                        <li v-for="item in activeEventList" :key="item.cmnid">
                                             <i class="activeEventListIcon" v-if="item.severity === 'E'">
                                                 <img src="../../assets/icons/error.png" alt=""/>
                                             </i>
@@ -166,7 +166,6 @@
 
 <script>
 import API from '../../api';
-import $moment from 'moment';
 import {
     getCookie,
     setCookie
@@ -279,7 +278,6 @@ export default {
                 this.activeEventCount = res.data.items.length;
                 console.log(res.data.items);
                 this.activeEventList = res.data.items;
-                console.log($moment);
                 this.activeEventList.forEach(item => {
                     console.log(item.date);
                 })
