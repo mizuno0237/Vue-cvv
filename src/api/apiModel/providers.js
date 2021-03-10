@@ -62,3 +62,9 @@ export const restRemoteConsoleKvmStatusPreempt = params => {
     return response;
   });
 };
+
+export const restGetIdentity = params => {
+  return FetchGet('/api/providers/identity', params).then(response => {
+    return response;
+  });
+};

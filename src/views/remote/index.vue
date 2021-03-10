@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import API from '../../api/index.js'
+    import API from '../../api/index.js';
     export default {
         name: 'remote',
         data() {
@@ -28,6 +28,15 @@
                 chatHisData: [],
                 ifAlreadyShowPreemptDialog: false,
                 powerStatus: null,
+                curScreenMode: 3,
+                originScreenWidth: 0,
+                originScreenHeight: 0,
+                viewerResolutionRatio: 1.33,
+                rpRecorder: null,
+                vRecordingCompleted: false,
+                vRecordingInProgress: false,
+                vRecordingRequest: false
+                
             }
         },
         methods: {
@@ -70,12 +79,14 @@
                     this.htmlViewer.registerRPVMLoginResponseCallback(this.loginVMCallback);
                     this.htmlViewer.registerRPVMSessionDisconnectCallback(this.disconnectVMCallback);
                     this.htmlViewer.registerRPVMDeviceInfoUpdateCallback(this.infoVMDevicesCallback);
-                    this.htmlViewer.registerRPVMDeviceStatusUpdateCallback(statusVMDeviceCallback);
-                    this.htmlViewer.registerRPUIInitCallback(htmlViewerInitCallback);
-                    this.htmlViewer.registerRPPreemptionCallback(preemptionCallback);
-                    this.htmlViewer.registerRPUserInteractionCallback(sessionTimeoutCallback);
-                    this.htmlViewer.registerRPResolutionCallback(rpResolutionCallback);
+                    this.htmlViewer.registerRPVMDeviceStatusUpdateCallback(this.statusVMDeviceCallback);
+                    this.htmlViewer.registerRPUIInitCallback(this.htmlViewerInitCallback);
+                    this.htmlViewer.registerRPPreemptionCallback(this.preemptionCallback);
+                    this.htmlViewer.registerRPUserInteractionCallback(this.sessionTimeoutCallback);
+                    this.htmlViewer.registerRPResolutionCallback(this.rpResolutionCallback);
                     this.htmlViewer.setRPCredential('USERID', 'Passw0rd12');
+                    this.supportRecorder();
+                    this.htmlViewer.connectRPViewer();
                 })
             },
             viewerAPIErrorCallback(errorFunctionName, errorCode) {
@@ -282,13 +293,15 @@
                 console.log('devices - details\t' + JSON.stringify(deviceList));
             },
             statusVMDeviceCallback(deviceId, isMapped, statusRemote, statusLocal) {
-                console.log('statusVMDeviceCallback Device::' + deviceId  + ' Status::' + statusRemote  + ' Local::' + statusLocal);
+                console.log('statusVMDeviceCallback Device::' + deviceId + ' Status::' + statusRemote + ' Local::' +
+                    statusLocal);
                 const RPViewer = window.RPViewer;
-                if ((statusRemote !== RPViewer.RP_MEDIA_REMOTE_STATUS.REMOTE_OK) || (statusLocal !== RPViewer.RP_MEDIA_LOCAL_STATUS.LOCAL_OK)) { 
-                    if ((statusRemote == -1) && (statusLocal === 0) ) return;
+                if ((statusRemote !== RPViewer.RP_MEDIA_REMOTE_STATUS.REMOTE_OK) || (statusLocal !== RPViewer.RP_MEDIA_LOCAL_STATUS
+                        .LOCAL_OK)) {
+                    if ((statusRemote == -1) && (statusLocal === 0)) return;
                     let msgError = "xccErrMsg_rp_vm_unspecifiedErr";
                     console.log(msgError);
-                    switch ( statusRemote ) {
+                    switch (statusRemote) {
                         case RPViewer.RP_MEDIA_REMOTE_STATUS.REMOTE_DEVICE_INVALID:
                             msgError = "xccErrMsg_rp_vm_deviceInvalid";
                             break;
@@ -320,7 +333,7 @@
                             msgError = "xccErrMsg_rp_vm_WriteFailed";
                             break;
                     }
-                    switch ( statusLocal ) {
+                    switch (statusLocal) {
                         case RPViewer.RP_MEDIA_LOCAL_STATUS.LOCAL_DRIVE_INVALID:
                             msgError = "xccErrMsg_rp_vm_localDriveInvalid";
                             break;
@@ -345,6 +358,76 @@
                     }
                     this.htmlViewer.unMapRPDevice(deviceId);
                 }
+            },
+            htmlViewerInitCallback() {
+                console.log("htmlViewer init ok!");
+                this.fitToScreen();
+            },
+            preemptionCallback(userName, ipAddress, bCanReject, timeout) {
+                console.log('Preemption request from ::' + userName + ' bCanReject::' + bCanReject + ' timeout::' +
+                    timeout + ' ipAddress::' + ipAddress + 'timeout' + timeout);
+                let timeOutStr = '1 ' + 'xccErrMsg_remote_ConsolePreemptionHour';
+                console.log(timeOutStr);
+                if (timeout >= 60) {
+                    timeout -= 10;
+                }
+                switch (timeout) {
+                    case 1:
+                        timeout = 60;
+                        timeOutStr = '1 ' + 'xccErrMsg_remote_ConsolePreemptionMinute';
+                        break;
+                    case 60:
+                        timeOutStr = '1 ' + 'xccErrMsg_remote_ConsolePreemptionMinute';
+                        break;
+                    case 300:
+                        timeOutStr = '5 ' + 'xccErrMsg_remote_ConsolePreemptionMinutes';
+                        break;
+                    case 600:
+                        timeOutStr = "10 " + 'xccErrMsg_remote_ConsolePreemptionMinutes';
+                        break;
+                    case 1800:
+                        timeOutStr = "30 " + 'xccErrMsg_remote_ConsolePreemptionMinutes';
+                        break;
+                    case 3600:
+                        timeOutStr = "1 " + "xccErrMsg_remote_ConsolePreemptionHour";
+                        break;
+                    case 7200:
+                        timeOutStr = "2 " + "xccErrMsg_remote_ConsolePreemptionHours";
+                        break;
+                    case 86400:
+                        timeOutStr = "24 " + "xccErrMsg_remote_ConsolePreemptionHours";
+                        break;
+                }
+            },
+            sessionTimeoutCallback(userInteraction) {
+                console.log('check session timeout callback: userInteraction=' + userInteraction +
+                    ' ifMountLocalMedia=' + this.$store.state.ifMountLocalMedia);
+                if (userInteraction === true || this.$store.state.ifMountLocalMedia === true) {
+                    API.Providers.restGetIdentity().then(data => {
+                        console.log(data + 'get Identity to active session.')
+                    })
+                }
+            },
+            rpResolutionCallback(width, height) {
+                console.log("rpResolutionCallback origin resolution is " + width + "x" + height);
+                const bFullScreen = !(!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement);
+                if (bFullScreen) {
+                    return;
+                }
+                if (width == 0 || height == 0) {
+                    return
+                }
+                this.originScreenWidth = width;
+                this.originScreenHeight = height;
+                this.viewerResolutionRatio = width / height;
+                if (this.curScreenMode == 3) {
+                    this.fitToScreen();
+                }
+            },
+            recorderAPICallback() {
+                this.vRecordingCompleted = false;
+                this.vRecordingInProgress = false;
+                this.vRecordingRequest = false;
             },
             getUserName(userName) {
                 let name = '';
@@ -432,6 +515,22 @@
                         break;
                 }
                 console.log(isViewer);
+            },
+            fitToScreen() {
+                if (this.htmlViewer !== null) {
+                    this.curScreenMode = 3;
+                    this.htmlViewer.setRPMaintainAspectRatio(true);
+                    const parentDiv = document.getElementById('canvasParentDiv');
+                    this.viewerWidth = parentDiv.clientWidth;
+                    this.viewerHeight = parentDiv.clientHeight;
+                    this.htmlViewer.setRPEmbeddedViewerSize(this.viewerWidth, this.viewerHeight);
+                    console.log('set screen fit mode' + this.viewerWidth + '-' + this.viewerHeight);
+                }
+            },
+            supportRecorder() {
+                const RPRecorder = window.RPRecorder;
+                this.rpRecorder = new RPRecorder(this.recorderAPICallback);
+                this.rpRecorder.setRPRViewer(this.htmlViewer);
             }
         },
         mounted() {

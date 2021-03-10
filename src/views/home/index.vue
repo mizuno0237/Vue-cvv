@@ -285,7 +285,7 @@ export default {
         },
         initRemoteConsoleSettingCtrl() {
             if(undefined !== getCookie('remoteConsoleSessionMode')) {
-                this.remoteConsoleSessionMode = this.loginInfo.userName + getCookie('remoteConsoleSessionMode');
+                this.remoteConsoleSessionMode = this.$store.state.loginInfo.userName + getCookie('remoteConsoleSessionMode');
             } else if(this.tierInHome ===  2) {
                 this.remoteConsoleSessionMode = 'single';
             } else if(this.tierInHome ===  3) {
