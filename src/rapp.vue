@@ -23,7 +23,7 @@
 <script>
 import leftMenu from './components/leftMenu.vue';
 import topMenu from './components/topMenu.vue';
-import API from './api';
+import API from '../../api';
 export default {
     name: 'App',
     data () {
@@ -31,28 +31,20 @@ export default {
             heartbeat_count: 0
         };
     },
-    mounted() {
-        setInterval(() => {
-            if(this.loginStatus && sessionStorage.token) {
-                API.Providers.heartbeatTimer().then(() => {
-                    this.heartbeat_count = 0;
-                }, () => {
-                    this.heartbeat_count++;
-                    this.heartbeat_count = this.heartbeat_count > 27 ? 0 : this.heartbeat_count++;
-                    this.$store.commit('changeUserInfo', '');
-                    this.$store.commit('setToken', '');
-                    sessionStorage.token = '';
-                    this.$store.commit('changeLoginStatus', false);
-                    this.$message({
-                        message: 'Disconnected from BMC. Please check BMC status.',
-                        type: 'error'
-                    })
-                    console.log('clear token after continuous heart beat failure');
-                    this.$router.push('/login');
-                })
-            }
-        }, 10000);
-    },
+    // mounted() {
+    //     setInterval(() => {
+    //         if(this.loginStatus && sessionStorage.token) {
+    //             API.Providers.heartbeatTimer().then(() => {
+    //                 this.heartbeat_count = 0;
+    //             }, () => {
+    //                 this.heartbeat_count++;
+    //                 this.heartbeat_count = this.heartbeat_count > 27 ? 0 : this.heartbeat_count++;
+    //                 this.$store.commit('changeUserInfo', '');
+    //                 console.log('clear token after continuous heart beat failure');
+    //             })
+    //         }
+    //     }, 10000);
+    // },
     computed:{
         loginStatus() {
             return this.$store.state.loginStatus;
@@ -95,10 +87,5 @@ body,html,#app,#appContainer,#appMain{
 }
 a{
     text-decoration:none;
-}
-.xccContentdiv{
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-    color: #333333;
 }
 </style>

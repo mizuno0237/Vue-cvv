@@ -36,3 +36,27 @@ export const restGetPortAssignment = params => {
     return response;
   });
 };
+
+export const getFmInformation = params => {
+  return FetchGet('/api/dataset/imm_firmware', params).then((response) => {
+    return response;
+  });
+};
+
+export const getUploadedImageInfoURIPromise = params => {
+  return FetchGet('/api/dataset/imm_firmware_success', params).then((response) => {
+    return response;
+  });
+};
+
+export const getFmUpdateStatus = params => {
+  return FetchGet('/api/dataset/imm_firmware_update', params).then((response) => {
+    return response;
+  });
+};
+
+export const restUpdateProgressURI = params => {
+  return FetchGet('/api/dataset/imm_firmware_progress', params).then((response) => {
+    return response;
+  });
+};

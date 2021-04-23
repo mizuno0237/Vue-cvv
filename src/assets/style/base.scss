@@ -199,3 +199,7 @@ input:-webkit-autofill {
     outline-offset: 2px;
     cursor: pointer;
 }
+
+.el-dialog__headerbtn .el-dialog__close:hover{
+    color: #000!important;
+}

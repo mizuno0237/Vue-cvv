@@ -150,6 +150,8 @@ export default {
                 }else{
                     console.log('wrong username or password')
                 }
+            }, () => {
+                this.errMsg = 'Login failed; Invalid password or username';
             });
         },
         restLoginSysDetailInfo() {

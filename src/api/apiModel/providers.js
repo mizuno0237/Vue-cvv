@@ -68,3 +68,33 @@ export const restGetIdentity = params => {
     return response;
   });
 };
+
+export const restWebRequestSpaceURIPromise = params => {
+  return FetchPost('/api/providers/fwupdate', params).then(response => {
+    return response;
+  });
+};
+
+export const restGetRPCredential = params => {
+  return FetchPost('/api/providers/rp_cred', params).then(response => {
+    return response;
+  });
+};
+
+export const heartbeatTimer = params => {
+  return FetchGet('/api/providers/heartbeats', params).then(response => {
+    return response;
+  });
+};
+
+export const restRestartAfterUpdate = params => {
+  return FetchPost('/api/providers/imm_reset', params).then(response => {
+    return response;
+  });
+};
+
+export const restLicenseList = params => {
+  return FetchGet('/api/providers/imm_fod', params).then(response => {
+    return response;
+  });
+};

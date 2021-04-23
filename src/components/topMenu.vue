@@ -39,14 +39,20 @@ export default {
             powerState: null,
             ledStatus: null,
             machineName: '',
-            systemName: ''
+            systemName: '',
+            getMaintenanceModeTimer: null
         }
     },
     mounted() {
         this.systemDate();
-        this.restPowerActionList();
+        this.getMaintenanceModeTimer = setInterval(() => {
+            this.restPowerActionList();
+        }, 10000)
         this.restHeader();
         this.getCurrentUser();
+    },
+    destroyed() {
+        clearInterval(this.getMaintenanceModeTimer);
     },
     methods: {
         getCurrentUser() {

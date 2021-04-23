@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {getCookie} from './../util/cookie.js';
 export const QS = require('qs');
 // json请求头
 export const oXHRHeadrs = {
@@ -24,7 +25,10 @@ export const oXHRHeadrsFormData = {
 axios.interceptors.request.use(
     config => {
         if (sessionStorage.token) {
-            config.headers.Authorization = 'Bearer ' + sessionStorage.token
+            config.headers.Authorization = 'Bearer ' + sessionStorage.token;
+        }
+        if(getCookie('_csrf_token')) {
+            config.headers['X-XSRF-TOKEN'] = getCookie('_csrf_token');
         }
         return config
     }

@@ -12,8 +12,8 @@
             "type": "memory"
         },
         {
-            "install": "2",
-            "max": 8,
+            "install": "N/A",
+            "max": "N/A",
             "type": "storage"
         },
         {
@@ -22,8 +22,8 @@
             "type": "ps"
         },
         {
-            "install": "2",
-            "max": 6,
+            "install": "N/A",
+            "max": 24,
             "type": "fan"
         },
         {

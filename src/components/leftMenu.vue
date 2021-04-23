@@ -23,6 +23,10 @@
                         <i><img src="../assets/icons/inventory-white.png" alt=""/></i>
                         <span slot="title">Inventory</span>
                     </el-menu-item>
+                    <el-menu-item index="/fm-update">
+                        <i><img src="../assets/icons/firmware-update-white.png" alt=""/></i>
+                        <span slot="title">Firmware Update</span>
+                    </el-menu-item>
                     <el-menu-item index="/virmedia">
                         <i><img src="../assets/icons/remote-control-white.png" alt=""/></i>
                         <span slot="title">Remote Console</span>
@@ -87,7 +91,7 @@ export default {
     padding: 0 0 0 14px!important;
     display: flex;
     span{
-        margin: 1px 0 0 9px;
+        margin: 1px 0 0 17px;
     }
     i{
         img{

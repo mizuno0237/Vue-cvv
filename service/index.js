@@ -178,3 +178,55 @@ app.get('/api/dataset/imm_ports', function(req, res) {
         console.log('send:imm_ports.json');
     });
 })
+
+app.get('/api/dataset/imm_firmware', function(req, res) {
+    fs.readFile('./test_json/imm_firmware.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:sys_info.json');
+    });
+});
+
+app.post('/api/providers/fwupdate', function(req, res) {
+    if(req.body.UPD_WebReserve === 1) {
+        res.json({return: 0});
+    }else {
+        fs.readFile('./test_json/fwupdate.json', function(error, fileData) {
+            if (error) {
+                console.log('read err : ' + error);
+            }
+            res.json(JSON.parse(fileData));
+            console.log('send:sys_info.json');
+        });
+    }
+});
+
+app.post('/upload', function(req, res) {
+    res.json({return: 0});
+});
+
+app.get('/upload/progress', function(req, res) {
+    res.json({return: 0});
+});
+
+app.get('/api/providers/heartbeats', function(req, res) {
+    fs.readFile('./test_json/heartbeats.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:heartbeats.json');
+    });
+});
+
+app.get('/api/providers/imm_fod', function(req, res) {
+    fs.readFile('./test_json/imm_fod.json', function(error, fileData) {
+        if (error) {
+            console.log('read err : ' + error);
+        }
+        res.json(JSON.parse(fileData));
+        console.log('send:imm_fod.json');
+    });
+});

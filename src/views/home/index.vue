@@ -9,53 +9,71 @@
                                 <el-tab-pane label="Health Summary" name="first">
                                     <el-row>
                                         <el-col :span="8" v-if="hardwareGeneralInfo.cpu.exist">
-                                            <img src="../../assets/icons/cpu-dcgg.png" v-if="hardwareGeneralInfo.cpu.hwSlotsInstall > 0">
-                                            <img src="../../assets/icons/cpu-inactive.png" v-if="hardwareGeneralInfo.cpu.hwSlotsInstall == 0">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">CPU</router-link></div>
+                                            <img src="../../assets/icons/cpu-dcgg.png" v-if="hardwareGeneralInfo.cpu.hwSlotsInstall > 0 && hardwareGeneralInfo.cpu.hwSlotsCount > 0">
+                                            <img src="../../assets/icons/cpu-inactive.png" v-else>
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}" :style="{color: (hardwareGeneralInfo.cpu.hwSlotsCount > 0 && hardwareGeneralInfo.cpu.hwSlotsInstall > 0 ? '#0096E7' : '#AEAEAE')}">CPU</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ hardwareGeneralInfo.cpu.hwSlotsInstall + ' / ' + hardwareGeneralInfo.cpu.hwSlotsCount + ' installed'}}
+                                                <span v-if="hardwareGeneralInfo.cpu.hwSlotsCount > 0 && hardwareGeneralInfo.cpu.hwSlotsInstall > 0">
+                                                    {{ hardwareGeneralInfo.cpu.hwSlotsInstall + ' / ' + hardwareGeneralInfo.cpu.hwSlotsCount + ' installed'}}
+                                                </span>
+                                                <span v-else class="hwInstallInfoInactive">Not found</span>
                                             </div>
                                         </el-col>
                                         <el-col :span="8" v-if="hardwareGeneralInfo.memory.exist">
-                                            <img src="../../assets/icons/memory-dcgg.png" v-if="hardwareGeneralInfo.memory.hwSlotsInstall > 0">
-                                            <img src="../../assets/icons/memory-inactive.png" v-if="hardwareGeneralInfo.memory.hwSlotsInstall == 0">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Memory</router-link></div>
+                                            <img src="../../assets/icons/memory-dcgg.png" v-if="hardwareGeneralInfo.memory.hwSlotsInstall > 0 && hardwareGeneralInfo.memory.hwSlotsCount > 0">
+                                            <img src="../../assets/icons/memory-inactive.png" v-else>
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}" :style="{color: (hardwareGeneralInfo.memory.hwSlotsCount > 0 && hardwareGeneralInfo.memory.hwSlotsInstall > 0 ? '#0096E7' : '#AEAEAE')}">Memory</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ hardwareGeneralInfo.memory.hwSlotsInstall + ' / ' + hardwareGeneralInfo.memory.hwSlotsCount + ' installed'}}
+                                                <span v-if="hardwareGeneralInfo.memory.hwSlotsCount > 0 && hardwareGeneralInfo.memory.hwSlotsInstall > 0">
+                                                    {{ hardwareGeneralInfo.memory.hwSlotsInstall + ' / ' + hardwareGeneralInfo.memory.hwSlotsCount + ' installed'}}
+                                                </span>
+                                                <span v-else class="hwInstallInfoInactive">Not found</span>
                                             </div>
                                         </el-col>
                                         <el-col :span="8" v-if="hardwareGeneralInfo.storage.exist">
-                                            <img src="../../assets/icons/storage-dcgg.png" v-if="hardwareGeneralInfo.storage.hwSlotsInstall > 0">
-                                            <img src="../../assets/icons/storage-inactive.png" v-if="hardwareGeneralInfo.storage.hwSlotsInstall == 0">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Local Storage</router-link></div>
+                                            <img src="../../assets/icons/storage-dcgg.png" v-if="hardwareGeneralInfo.storage.hwSlotsInstall > 0 && hardwareGeneralInfo.storage.hwSlotsCount > 0">
+                                            <img src="../../assets/icons/storage-inactive.png" v-else>
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}" :style="{color: (hardwareGeneralInfo.storage.hwSlotsCount > 0 && hardwareGeneralInfo.storage.hwSlotsInstall > 0 ? '#0096E7' : '#AEAEAE')}">Local Storage</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ hardwareGeneralInfo.storage.hwSlotsInstall + ' / ' + hardwareGeneralInfo.storage.hwSlotsCount + ' installed'}}
+                                                <span v-if="hardwareGeneralInfo.storage.hwSlotsCount > 0 && hardwareGeneralInfo.storage.hwSlotsInstall > 0">
+                                                    {{ hardwareGeneralInfo.storage.hwSlotsInstall + ' / ' + hardwareGeneralInfo.storage.hwSlotsCount + ' installed'}}
+                                                </span>
+                                                <span v-else class="hwInstallInfoInactive">Not found</span>
                                             </div>
                                         </el-col>
                                     </el-row>
                                     <el-row>
                                         <el-col :span="8" v-if="hardwareGeneralInfo.pci.exist">
-                                            <img src="../../assets/icons/pci-dcgg.png" v-if="hardwareGeneralInfo.pci.hwSlotsInstall > 0">
-                                            <img src="../../assets/icons/pci-inactive.png" v-if="hardwareGeneralInfo.pci.hwSlotsInstall == 0">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">PCI</router-link></div>
+                                            <img src="../../assets/icons/pci-dcgg.png" v-if="hardwareGeneralInfo.pci.hwSlotsInstall > 0 && hardwareGeneralInfo.pci.hwSlotsCount > 0">
+                                            <img src="../../assets/icons/pci-inactive.png" v-else>
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}" :style="{color: (hardwareGeneralInfo.pci.hwSlotsCount > 0 && hardwareGeneralInfo.pci.hwSlotsInstall > 0 ? '#0096E7' : '#AEAEAE')}">PCI</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ hardwareGeneralInfo.pci.hwSlotsInstall + ' / ' + hardwareGeneralInfo.pci.hwSlotsCount + ' installed'}}
+                                                <span v-if="hardwareGeneralInfo.pci.hwSlotsCount > 0 && hardwareGeneralInfo.pci.hwSlotsInstall > 0">
+                                                    {{ hardwareGeneralInfo.pci.hwSlotsInstall + ' / ' + hardwareGeneralInfo.pci.hwSlotsCount + ' installed'}}
+                                                </span>
+                                                <span v-else class="hwInstallInfoInactive">Not found</span>
                                             </div>
                                         </el-col>
                                         <el-col :span="8" v-if="hardwareGeneralInfo.powerSupply.exist">
-                                            <img src="../../assets/icons/power-supply-dcgg.png" v-if="hardwareGeneralInfo.powerSupply.hwSlotsInstall > 0">
-                                            <img src="../../assets/icons/power-supply-gray.png" v-if="hardwareGeneralInfo.powerSupply.hwSlotsInstall == 0">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Power Supply</router-link></div>
+                                            <img src="../../assets/icons/power-supply-dcgg.png" v-if="hardwareGeneralInfo.powerSupply.hwSlotsInstall > 0 && hardwareGeneralInfo.powerSupply.hwSlotsCount > 0">
+                                            <img src="../../assets/icons/power-supply-gray.png" v-else>
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}" :style="{color: (hardwareGeneralInfo.powerSupply.hwSlotsCount > 0 && hardwareGeneralInfo.powerSupply.hwSlotsInstall > 0 ? '#0096E7' : '#AEAEAE')}">Power Supply</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ hardwareGeneralInfo.powerSupply.hwSlotsInstall + ' / ' + hardwareGeneralInfo.powerSupply.hwSlotsCount + ' installed'}}
+                                                <span v-if="hardwareGeneralInfo.powerSupply.hwSlotsCount > 0 && hardwareGeneralInfo.powerSupply.hwSlotsInstall > 0">
+                                                    {{ hardwareGeneralInfo.powerSupply.hwSlotsInstall + ' / ' + hardwareGeneralInfo.powerSupply.hwSlotsCount + ' installed'}}
+                                                </span>
+                                                <span v-else class="hwInstallInfoInactive">Not found</span>
                                             </div>
                                         </el-col>
                                         <el-col :span="8" v-if="hardwareGeneralInfo.fan.exist">
-                                            <img src="../../assets/icons/fan-dcgg.png" v-if="hardwareGeneralInfo.fan.hwSlotsInstall > 0">
-                                            <img src="../../assets/icons/fan-inactive.png" v-if="hardwareGeneralInfo.fan.hwSlotsInstall == 0">
-                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}">Fan</router-link></div>
+                                            <img src="../../assets/icons/fan-dcgg.png" v-if="hardwareGeneralInfo.fan.hwSlotsInstall > 0 && hardwareGeneralInfo.fan.hwSlotsCount > 0">
+                                            <img src="../../assets/icons/fan-inactive.png" v-else>
+                                            <div><router-link class="hwTypeInfo" :to="{path:'/inventory'}" :style="{color: (hardwareGeneralInfo.fan.hwSlotsCount > 0 && hardwareGeneralInfo.fan.hwSlotsInstall > 0 ? '#0096E7' : '#AEAEAE')}">Fan</router-link></div>
                                             <div class="hwInstallInfo">
-                                                {{ hardwareGeneralInfo.fan.hwSlotsInstall + ' / ' + hardwareGeneralInfo.fan.hwSlotsCount + ' installed'}}
+                                                <span v-if="hardwareGeneralInfo.fan.hwSlotsCount > 0 && hardwareGeneralInfo.fan.hwSlotsInstall > 0">
+                                                    {{ hardwareGeneralInfo.fan.hwSlotsInstall + ' / ' + hardwareGeneralInfo.fan.hwSlotsCount + ' installed'}}
+                                                </span>
+                                                <span v-else class="hwInstallInfoInactive">Not found</span>
                                             </div>
                                         </el-col>
                                     </el-row>
@@ -278,9 +296,6 @@ export default {
                 this.activeEventCount = res.data.items.length;
                 console.log(res.data.items);
                 this.activeEventList = res.data.items;
-                this.activeEventList.forEach(item => {
-                    console.log(item.date);
-                })
             })
         },
         initRemoteConsoleSettingCtrl() {
@@ -307,8 +322,8 @@ export default {
                         type = 'powerSupply';
                     }
                     this.hardwareGeneralInfo[type].exist = true;
-                    this.hardwareGeneralInfo[type].hwSlotsInstall = item.install;
-                    this.hardwareGeneralInfo[type].hwSlotsCount = item.max;
+                    this.hardwareGeneralInfo[type].hwSlotsInstall = item.install === 'N/A' ? 0 : item.install;
+                    this.hardwareGeneralInfo[type].hwSlotsCount = item.max === 'N/A' ? 0 : item.max;
                 })
                 this.hardwareGeneralInfo['systemBoard'].exist = true;
                 this.hardwareGeneralInfo['other'].exist = true;
@@ -354,7 +369,7 @@ export default {
             xhr.setRequestHeader("Content-type", "application/octet-stream");
             xhr.setRequestHeader("Authorization", 'Bearer ' + this.$store.state.token);
             xhr.onload = function() {
-                if (this.status == 200) {
+                if (this.status === 200) {
                     if(cb) {
                         cb(this.response);
                     }
@@ -458,6 +473,9 @@ export default {
         .hwInstallInfo{
             font-size: 12px;
             line-height: 28px;
+            .hwInstallInfoInactive{
+                color: #AEAEAE;
+            }
         }
         .hwTypeInfo{
             font-size: 12px;

@@ -1,23 +1,15 @@
 <template>
-  <div class="hello">
-    <h1>Event页面</h1>
-  </div>
+    <div>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'event',
-  data () {
-    return {
-        msg: String
+    export default {
+        name: 'event',
+        data(){},
+        mounted() {}
     }
-  }
-}
 </script>
 
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
+<style scoped lang="scss">
 </style>
-  

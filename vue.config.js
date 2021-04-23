@@ -16,6 +16,14 @@ module.exports={
                 pathRewrite: {
                     '^/download': '/download'
                 }
+            },
+            '/upload': {
+                target: 'http://localhost:3000',
+                ws: true,
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/upload': '/upload'
+                }
             }
         }
     }

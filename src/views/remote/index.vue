@@ -35,8 +35,26 @@
                 rpRecorder: null,
                 vRecordingCompleted: false,
                 vRecordingInProgress: false,
-                vRecordingRequest: false
-                
+                vRecordingRequest: false,
+                noRespondDisconnetTimeOut: 3600,
+                ifAllowDisconnect: 1,
+                rpCredential: {
+                    watchCount: 0,
+                    ready: false,
+                    username: 'USERID',
+                    password: 'Passw0rd12',
+                    index: null,
+                    ifSingle: false
+                },
+                timeOutMap: {
+                    "1":60,
+                    "2":300,
+                    "3":600,
+                    "4":1800,
+                    "5":3600,
+                    "6":7200,
+                    "7":86400
+                }
             }
         },
         methods: {
@@ -84,7 +102,8 @@
                     this.htmlViewer.registerRPPreemptionCallback(this.preemptionCallback);
                     this.htmlViewer.registerRPUserInteractionCallback(this.sessionTimeoutCallback);
                     this.htmlViewer.registerRPResolutionCallback(this.rpResolutionCallback);
-                    this.htmlViewer.setRPCredential('USERID', 'Passw0rd12');
+                    console.log(this.rpCredential.username, this.rpCredential.password);
+                    this.htmlViewer.setRPCredential(this.rpCredential.username, this.rpCredential.password);
                     this.supportRecorder();
                     this.htmlViewer.connectRPViewer();
                 })
@@ -201,10 +220,6 @@
                     this.htmlViewer.closeRPViewerSession();
                     this.htmlViewer = null;
                 }
-                // if ($scope.preemptAutoAcceptTimeout != undefined) {
-                //     $timeout.cancel($scope.preemptAutoAcceptTimeout);
-                //     this.preemptAutoAcceptTimeout = undefined;
-                // }
                 this.reportTerminationReason(reason, true);
             },
             videoCodecCallback(bCompression, ySelector, uvSelector) {
@@ -409,7 +424,7 @@
                 }
             },
             rpResolutionCallback(width, height) {
-                console.log("rpResolutionCallback origin resolution is " + width + "x" + height);
+                console.log('rpResolutionCallback origin resolution is ' + width + 'x' + height);
                 const bFullScreen = !(!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement);
                 if (bFullScreen) {
                     return;
@@ -488,9 +503,7 @@
                         break;
                     case shutdownReason.SHUTDOWN_WEBSOCKET:
                         reason = 'Network Connectivity Dropped';
-                        if (this.ifAlreadyShowPreemptDialog == true) {
-                            this.ifAlreadyShowPreemptDialog = false;
-                        }
+                        this.ifAlreadyShowPreemptDialog = this.ifAlreadyShowPreemptDialog ? false : true;
                         break;
                     case shutdownReason.SHUTDOWN_REBOOT:
                         reason = "xccErrMsg_rp_shutdown_reboot";
@@ -537,7 +550,24 @@
             this.viewerWidth = this.$refs.canvasParentDiv.offsetWidth;
             this.viewerHeight = this.$refs.canvasParentDiv.offsetHeight;
             this.remote.host_addr = window.location.host;
-            this.doCreateViewer();
+            API.Providers.getRpSession().then(data => {
+                this.noRespondDisconnetTimeOut = this.timeOutMap[data.data.timeout] + 10;
+                this.ifAllowDisconnect = data.data.enabled;
+                console.log('get ifAllowDisconnect = ' + this.ifAllowDisconnect);
+                API.Providers.restGetRPCredential({'Preempt': this.ifAllowDisconnect, 'PreemptTimeout': this.noRespondDisconnetTimeOut}).then(data => {
+                    if(data.data.return === 0) {
+                        console.log('temp rp credential returned via api\t' + JSON.stringify(data.data));
+                        this.rpCredential.username =  data.data.username;
+                        this.rpCredential.password = data.data.password;
+                        this.rpCredential.index = data.data.index;
+                        this.rpCredential.ready = true;
+                        console.log('in getRPCredential set remote.rpCredential.ready as true');
+                    }
+                    this.doCreateViewer();
+                }, () => {
+                    this.doCreateViewer();
+                })
+            })
         }
     }
 </script>
@@ -550,7 +580,6 @@
         min-width: 580px;
         margin-right: auto;
         background-color: rgb(255, 255, 255);
-
         #canvasParentDiv {
             width: 750px;
             height: 563.91px;
