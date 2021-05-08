@@ -203,3 +203,36 @@ input:-webkit-autofill {
 .el-dialog__headerbtn .el-dialog__close:hover{
     color: #000!important;
 }
+
+body,html,#app,#appContainer,#appMain{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    #imm3Content{
+        background-color: #F3F3F6;
+        padding: 0 30px 0 40px;
+    }
+}
+.el-aside{
+    #XCCLogo{
+        width: 190px;
+        margin: 0 auto;
+        img{
+            width:190px;
+            height:48px;
+        }
+    }
+    background-color: #333F4B;
+}
+.el-header{
+    height: 48px!important;
+    padding: 0!important;
+}
+a{
+    text-decoration:none;
+}
+.xccContentdiv{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    color: #333333;
+}

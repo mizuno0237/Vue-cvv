@@ -60,3 +60,9 @@ export const restUpdateProgressURI = params => {
     return response;
   });
 };
+
+export const restGetCpuInfo = params => {
+  return FetchGet('/api/dataset/imm_processors', params).then((response) => {
+    return response;
+  });
+};

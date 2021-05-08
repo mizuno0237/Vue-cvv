@@ -191,7 +191,7 @@ export default {
             axios.post('/upload?X-Progress-ID=' + updateRandomNum, {headers: {
                     'Content-Type': undefined
                 }},{transformRequest: function() {
-                    var formData = new FormData();
+                    const formData = new FormData();
                     formData.append(document.getElementById(elementId).files[0].name, document.getElementById(elementId).files[0]);
                     return formData;
                 }}).then(data => {

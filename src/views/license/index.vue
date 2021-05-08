@@ -6,19 +6,20 @@
             </el-col>
             <el-col :span="24" id="licenseContent" class="xccContentdiv">
                 <div id="licenseBtns">
-                    <span id="licenseAdd" class="commonIconBlueBorder" @click="clearAddLicense()"><i></i>Upgrade License</span>
-                    <span id="licenseDelete" class="commonIconBlueBorder"><i></i>Delete</span>
-                    <span id="licenseExport" class="commonIconBlueBorder"><i></i>Export</span>
+                    <span id="licenseAdd" class="commonIconBlueBorder" @click="openAddLicenseDialog()"><i></i>Upgrade License</span>
+                    <span id="licenseDelete" class="commonIconBlueBorder" @click="openDeleteLicenseDialog()"><i></i>Delete</span>
+                    <span id="licenseExport" class="commonIconBlueBorder" @click="openExportLicenseDialog()"><i></i>Export</span>
                 </div>
                 <el-table :data="licenseList" border>
                     <el-table-column width="70px">
                         <template slot-scope="scope">
-                            <el-checkbox v-model="scope.row.ifCheck"></el-checkbox>
+                            <el-radio v-model="selectedLicenseData" :label="scope.row.type + ',' + scope.row.id"></el-radio>
                         </template>
                     </el-table-column>
                     <el-table-column
                         prop="type"
-                        label="Descriptor Type">
+                        label="Descriptor Type"
+                        width="180">
                     </el-table-column>
                     <el-table-column
                         prop="feature"
@@ -41,21 +42,30 @@
             </el-col>
         </el-row>
         <licenseAddDialog :ifShowLicenseAddDialog="ifShowLicenseAddDialog" @changeDialogStatus="changeDialogStatus"></licenseAddDialog>
+        <licenseExportDialog :ifShowLicenseExportDialog="ifShowLicenseExportDialog" @changeDialogStatus="changeDialogStatus" :selectedLicenseData="selectedLicenseData"/>
+        <licenseDeleteDialog :ifShowLicenseDeleteDialog="ifShowLicenseDeleteDialog" @changeDialogStatus="changeDialogStatus" :selectedLicenseData="selectedLicenseData"/>
     </div>
 </template>
 
 <script>
-import API from '../../api/index.js'
+import API from '../../api/index.js';
 import licenseAddDialog from './licenseAddDialog.vue';
+import licenseExportDialog from './licenseExportDialog.vue';
+import licenseDeleteDialog from './licenseDeleteDialog.vue';
 export default {
     name: 'license',
     components: {
-        licenseAddDialog
+        licenseAddDialog,
+        licenseExportDialog,
+        licenseDeleteDialog
     },
     data() {
         return {
             licenseList: [],
-            ifShowLicenseAddDialog: false
+            selectedLicenseData: '',
+            ifShowLicenseAddDialog: false,
+            ifShowLicenseExportDialog: false,
+            ifShowLicenseDeleteDialog: false,
         }
     },
     mounted() {
@@ -67,17 +77,24 @@ export default {
                     if(itm.valid_through === '') {
                         this.$set(itm, 'valid_through', 'No Constraints');
                     }
-                    this.$set(itm, 'ifCheck', false);
                 })
             }
         })
     },
     methods:{
-        clearAddLicense() {
+        openAddLicenseDialog() {
             this.ifShowLicenseAddDialog = true;
+        },
+        openExportLicenseDialog() {
+            this.ifShowLicenseExportDialog = true;
+        },
+        openDeleteLicenseDialog() {
+            this.ifShowLicenseDeleteDialog = true;
         },
         changeDialogStatus(data) {
             this.ifShowLicenseAddDialog = data;
+            this.ifShowLicenseExportDialog = data;
+            this.ifShowLicenseDeleteDialog = data;
         }
     }
 }
@@ -89,6 +106,9 @@ export default {
     font-weight: bold;
     padding: 20px 20px;
     margin-bottom: 20px;
+}
+/deep/.el-radio__label{
+    display: none;
 }
 #licenseContent{
     #licenseBtns{

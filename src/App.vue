@@ -38,17 +38,19 @@ export default {
                     this.heartbeat_count = 0;
                 }, () => {
                     this.heartbeat_count++;
-                    this.heartbeat_count = this.heartbeat_count > 27 ? 0 : this.heartbeat_count++;
-                    this.$store.commit('changeUserInfo', '');
-                    this.$store.commit('setToken', '');
-                    sessionStorage.token = '';
-                    this.$store.commit('changeLoginStatus', false);
-                    this.$message({
-                        message: 'Disconnected from BMC. Please check BMC status.',
-                        type: 'error'
-                    })
-                    console.log('clear token after continuous heart beat failure');
-                    this.$router.push('/login');
+                    if(this.heartbeat_count > 27) {
+                        this.heartbeat_count = 0;
+                        this.$store.commit('changeUserInfo', '');
+                        this.$store.commit('setToken', '');
+                        sessionStorage.token = '';
+                        this.$store.commit('changeLoginStatus', false);
+                        this.$message({
+                            message: 'Disconnected from BMC. Please check BMC status.',
+                            type: 'error'
+                        })
+                        console.log('clear token after continuous heart beat failure');
+                        this.$router.push('/login');
+                    }
                 })
             }
         }, 10000);
@@ -69,36 +71,5 @@ export default {
 </script>
 
 <style lang="scss">
-body,html,#app,#appContainer,#appMain{
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    #imm3Content{
-        background-color: #F3F3F6;
-        padding: 0 30px 0 40px;
-    }
-}
-.el-aside{
-    #XCCLogo{
-        width: 190px;
-        margin: 0 auto;
-        img{
-            width:190px;
-            height:48px;
-        }
-    }
-    background-color: #333F4B;
-}
-.el-header{
-    height: 48px!important;
-    padding: 0!important;
-}
-a{
-    text-decoration:none;
-}
-.xccContentdiv{
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-    color: #333333;
-}
+
 </style>

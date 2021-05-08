@@ -27,6 +27,31 @@
                     "processors_status": "Normal",
                     "processors_threads": "40",
                     "processors_voltage": "1.25  V"
+                },
+                {
+                    "processors_clock_speed": "1800 MHz",
+                    "processors_cores": "20",
+                    "processors_cpu_model": "Intel(R) Genuine processor",
+                    "processors_cpu_type": "CENTRAL",
+                    "processors_ext_clock": "100 MHz",
+                    "processors_family": "Intel Xeon",
+                    "processors_fru_name": "CPU 2",
+                    "processors_fru_number": "",
+                    "processors_health_date": "",
+                    "processors_health_event_id": "",
+                    "processors_health_message": "",
+                    "processors_l1datacache": "640 KB",
+                    "processors_l1instrcache": "640 KB",
+                    "processors_l2cache": "20480 KB",
+                    "processors_l3cache": "28160 KB",
+                    "processors_manuf_id": "Intel(R) Corporation",
+                    "processors_max_data_width": "64-bit capable",
+                    "processors_name": 1,
+                    "processors_part_id": "3230 3138 3134 3230 ",
+                    "processors_serial_number": "",
+                    "processors_status": "Normal",
+                    "processors_threads": "40",
+                    "processors_voltage": "1.25  V"
                 }
             ]
         }

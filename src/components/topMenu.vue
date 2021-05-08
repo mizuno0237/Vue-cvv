@@ -45,6 +45,7 @@ export default {
     },
     mounted() {
         this.systemDate();
+        this.restPowerActionList();
         this.getMaintenanceModeTimer = setInterval(() => {
             this.restPowerActionList();
         }, 10000)

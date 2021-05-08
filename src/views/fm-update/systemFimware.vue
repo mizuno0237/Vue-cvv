@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="xccContentdiv">
         <div id="systemtitle">
             <span>System Firmware</span>
             <el-button @click="startUpdate"><i class="xcc-icon-upgrade-active"></i>Update Firmware</el-button>

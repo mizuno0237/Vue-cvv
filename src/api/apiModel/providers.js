@@ -98,3 +98,9 @@ export const restLicenseList = params => {
     return response;
   });
 };
+
+export const exportBy = params => {
+  return FetchPost('/api/providers/imm_fod', params).then(response => {
+    return response;
+  });
+};

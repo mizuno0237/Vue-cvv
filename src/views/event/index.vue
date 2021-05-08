@@ -1,13 +1,12 @@
 <template>
     <div>
+        event works
     </div>
 </template>
 
 <script>
     export default {
-        name: 'event',
-        data(){},
-        mounted() {}
+        name: 'event'
     }
 </script>
 
