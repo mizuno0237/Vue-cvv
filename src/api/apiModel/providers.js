@@ -99,7 +99,7 @@ export const restLicenseList = params => {
   });
 };
 
-export const exportBy = params => {
+export const exportDeleteLicense = params => {
   return FetchPost('/api/providers/imm_fod', params).then(response => {
     return response;
   });

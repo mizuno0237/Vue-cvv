@@ -38,7 +38,7 @@ export default{
         },
         exportLicense() {
             console.log(this.selectedLicenseData);
-            API.Providers.exportBy({'FOD_LicenseKeyExport': this.selectedLicenseData}).then(data => {
+            API.Providers.exportDeleteLicense({'FOD_LicenseKeyExport': this.selectedLicenseData}).then(data => {
                 if(![null, undefined].includes(data.data) && data.data.return === 0) {
                     API.Download.downloadFile('/download/' + data.data.FileName, data.data.FileName)
                 }

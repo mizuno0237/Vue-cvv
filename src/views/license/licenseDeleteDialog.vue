@@ -5,7 +5,7 @@
         </el-row>
         <el-row id="licenseDialogBottom">
             <el-col :span="5">
-                <BaseButton :clickEvent="exportLicense" btnMsg="Delete" :ifDisabled="selectedLicenseData === ''"/>
+                <BaseButton :clickEvent="deleteLicense" btnMsg="Delete" :ifDisabled="selectedLicenseData === ''"/>
             </el-col>
             <el-col :span="3">
                 <BaseButton :clickEvent="closeDialog" :isCancelBtn="true"/>
@@ -15,9 +15,15 @@
 </template>
 
 <script>
+import API from '../../api/index.js';
 import BaseButton from '../../components/BaseButton.vue';
 export default{
     name: 'licenseDeleteDialog',
+    data() {
+        return{
+            licenseList: []
+        }
+    },
     props:{
         ifShowLicenseDeleteDialog:{
             type: Boolean,
@@ -33,7 +39,26 @@ export default{
     },
     methods:{
         closeDialog() {
-            this.$emit('changeDialogStatus', false);
+            this.$emit('changeDialogStatus', false, this.licenseList);
+        },
+        deleteLicense() {
+            console.log(this.selectedLicenseData);
+            API.Providers.exportDeleteLicense({'FOD_LicenseKeyDelete': this.selectedLicenseData}).then(data => {
+                if(![null, undefined].includes(data.data) && data.data.return === 0) {
+                    API.Providers.restLicenseList().then(data => {
+                        console.log(data);
+                        if(![null, undefined].includes(data.data.items) && ![null, undefined].includes(data.data.items[0])) {
+                            this.licenseList = data.data.items[0].keys;
+                            this.licenseList.forEach(itm => {
+                                if(itm.valid_through === '') {
+                                    this.$set(itm, 'valid_through', 'No Constraints');
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+            this.closeDialog();
         }
     }
 }

@@ -10,7 +10,7 @@
                     <span id="licenseDelete" class="commonIconBlueBorder" @click="openDeleteLicenseDialog()"><i></i>Delete</span>
                     <span id="licenseExport" class="commonIconBlueBorder" @click="openExportLicenseDialog()"><i></i>Export</span>
                 </div>
-                <el-table :data="licenseList" border>
+                <el-table :data="licenseList" border v-if="licenseList !== []">
                     <el-table-column width="70px">
                         <template slot-scope="scope">
                             <el-radio v-model="selectedLicenseData" :label="scope.row.type + ',' + scope.row.id"></el-radio>
@@ -91,7 +91,8 @@ export default {
         openDeleteLicenseDialog() {
             this.ifShowLicenseDeleteDialog = true;
         },
-        changeDialogStatus(data) {
+        changeDialogStatus(data, newList) {
+            this.licenseList = newList;
             this.ifShowLicenseAddDialog = data;
             this.ifShowLicenseExportDialog = data;
             this.ifShowLicenseDeleteDialog = data;
